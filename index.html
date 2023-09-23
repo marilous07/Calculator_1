@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<HTML>
-<HEAD>
+<html>
+<head>
   <meta http-equiv="Content-Type" content="text/html">
   <title>Calculator using SmartClient</title> 
 
-  <!-- SmartClient JavaScript -->
+  <!-- SmartClient -->
   <SCRIPT CHARSET="windows-1252" SRC=./Library/SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Core.js></SCRIPT>
   <SCRIPT CHARSET="windows-1252" SRC=./Library/SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Foundation.js></SCRIPT>
   <SCRIPT CHARSET="windows-1252" SRC=./Library/SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Containers.js></SCRIPT>
@@ -14,15 +14,14 @@
   <SCRIPT CHARSET="windows-1252" SRC=./Library/SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Calendar.js></SCRIPT>
   <SCRIPT CHARSET="windows-1252" SRC=./Library/SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/skins/EnterpriseBlue/load_skin.js></SCRIPT>
 
-  <!-- Your custom scripts -->
+  <!-- custom scripts -->
+  
   <script src="./history.js"></script>
   <script src="./calculator.js"></script>
-  <script src="./tabs.js"></script>
   <script src="./main.js"></script>
-  <script src="./container.js"></script>
 
-</HEAD>
-<BODY bgcolor="#FFFFFF">
+</head>
+<body>
 
   <noscript>
     <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
@@ -39,54 +38,30 @@
 
 
         <!-- Calculator -->
-        <div id="calculatorForm" class="tabcontent">
-           <!-- <input type="text" id="display" disabled />
-            <button onclick="clearDisplay()">C</button>
-            <button onclick="appendNumber(1)">1</button>
-            <button onclick="appendNumber(2)">2</button>
-            <button onclick="appendNumber(3)">3</button>
-            <button onclick="performOperation('+')">+</button>
-            <button onclick="appendNumber(4)">4</button>
-            <button onclick="appendNumber(5)">5</button>
-            <button onclick="appendNumber(6)">6</button>
-            <button onclick="performOperation('-')">-</button>
-            <button onclick="appendNumber(7)">7</button>
-            <button onclick="appendNumber(8)">8</button>
-            <button onclick="appendNumber(9)">9</button>
-            <button onclick="performOperation('*')">*</button>
-            <button onclick="appendNumber(0)">0</button>
-            <button onclick="calculate()">=</button>
-            <button onclick="performOperation('/')">/</button>
-          </div>         
--->
+        <div id="calculatorForm" class="tabcontent"> </div>         
+
           
 
     <!-- <div id="tab2">-->
         <!-- ιστορικό -->
         <div id="history" class="tabcontent"></div>
     
-    <!-- Add a script tag to initialize SmartClient components -->
-    <script>
-      // Make sure the SmartClient library is loaded
-      if (window.isc) {
-        isc.Page.setEvent("load", function() {
-          // Create and draw your SmartClient components here
-          // For example, let's add a simple DynamicForm to the "calculatorForm" div
-          isc.DynamicForm.create({
-            ID: "calculatorForm",
-            width: 300,
-            fields: [
-              {name: "display", type: "text", title: "Display"},
-              {name: "clear", type: "button", title: "Clear", click: "clearDisplay()"}
-              // ... (Add more fields based on your needs)
-            ]
-          }).draw();
-          
-          // You can also add components to the "history" div similarly
-          // ...
-        });
-      }
-    </script>
+        <script>
+          // Make sure the SmartClient library is loaded
+          if (window.isc) {
+            isc.Page.setEvent("load", function() {
+              // Create and draw your SmartClient components here
+              isc.DynamicForm.create({
+                ID: "calculatorForm",
+                width: 300,
+                fields: [
+                  {name: "display", type: "text", title: "Display"},
+                  {name: "clear", type: "button", title: "Clear", click: "clearDisplay()"}
+                ]
+              }).draw();
+            });
+          }
+        </script>
 
-</BODY>
-</HTML>
+  </body>
+</html>
