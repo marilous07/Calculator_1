@@ -1,56 +1,66 @@
-// Δήλωση μεταβλητών
 
+
+// Οι αρχικές μεταβλητές παραμένουν ίδιες
 let currentInput = "";
 let operation = null;
 let firstOperand = "";
 
-// οθόνη
+// Το ίδιο ισχύει και για τις συναρτήσεις
+
+isc.Page.setEvent("load", function() {
+    isc.DynamicForm.create({
+        ID: "calculatorForm",
+        width: 300,
+        fields: [
+            {name: "display", type: "text", canEdit: false},
+            {name: "clear", type: "button", title: "C", click: clearDisplay},
+            {name: "addOne", type: "button", title: "1", click: function() { appendNumber(1); }},
+            {name: "addTwo", type: "button", title: "2", click: function() { appendNumber(2); }},
+            // Οι υπόλοιποι αριθμοί και λειτουργίες εδώ...
+        ]
+    }).draw();
+});
+
 function clearDisplay() {
-  currentInput = "";
-  operation = null;
-  firstOperand = "";
-  document.getElementById("display").value = "";
-}
-
-// input
-function appendNumber(number) {
-  currentInput += number;
-  document.getElementById("display").value = currentInput;
-}
-
-// πράξεις
-function performOperation(op) {
-  if (!firstOperand) {
-    firstOperand = currentInput;
+    calculatorForm.setValue("display", "");
     currentInput = "";
-    operation = op;
-  }
+    firstOperand = "";
+    operation = null;
+}
+function appendNumber(number) {
+    currentInput += number;
+    calculatorForm.setValue("display", currentInput);
 }
 
-// υπολογισμός αποτελέσματος
-function calculate() {
-  let result = 0;
-  const secondOperand = currentInput;
+function performOperation(op) {
+    if (!firstOperand) {
+        firstOperand = currentInput;
+        currentInput = "";
+        operation = op;
+    }
+}
 
-  if (operation === "+") {
-    result = parseFloat(firstOperand) + parseFloat(secondOperand);
-  } else if (operation === "-") {
-    result = parseFloat(firstOperand) - parseFloat(secondOperand);
-  } else if (operation === "*") {
-    result = parseFloat(firstOperand) * parseFloat(secondOperand);
-  } else if (operation === "/") {
-    result = parseFloat(firstOperand) / parseFloat(secondOperand);
-  }
-    //  αποτέλεσμα και προσθήκη στο ιστορικό
-    document.getElementById("display").value = result;
-    addToHistory(firstOperand, operation, secondOperand, result);
+function calculate() {
+    let result = 0;
+    const secondOperand = currentInput;
+
+    if (operation === "+") {
+        result = parseFloat(firstOperand) + parseFloat(secondOperand);
+    } else if (operation === "-") {
+        result = parseFloat(firstOperand) - parseFloat(secondOperand);
+    } else if (operation === "*") {
+        result = parseFloat(firstOperand) * parseFloat(secondOperand);
+    } else if (operation === "/") {
+        result = parseFloat(firstOperand) / parseFloat(secondOperand);
+    }
+
+    // Εμφάνιση αποτελέσματος και αποθήκευση στο ιστορικό
+    calculatorForm.setValue("display", result);
+    // Εδώ θα μπορούσατε να προσθέσετε το αποτέλεσμα στο ιστορικό
     firstOperand = result;
     currentInput = "";
     operation = null;
-
-  // Εμφάνιση αποτελέσματος
-  document.getElementById("display").value = result;
-  firstOperand = result;
-  currentInput = "";
-  operation = null;
 }
+
+
+  
