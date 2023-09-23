@@ -1,0 +1,14 @@
+<DataSource ID="ReifyTourCloseWindow" inheritsFrom="ScriptTask" Constructor="ReifyTourCloseWindow">
+    <fields>
+        <field name="target" type="text" />
+        <field name="closeMethod" type="enum">
+            <valueMap>
+                <value>closeClick</value>
+                <value>destroy</value>
+                <value>hide</value>
+                <value>custom</value>
+            </valueMap>
+        </field>
+        <field name="customClose" type="string" />
+    </fields>
+</DataSource>

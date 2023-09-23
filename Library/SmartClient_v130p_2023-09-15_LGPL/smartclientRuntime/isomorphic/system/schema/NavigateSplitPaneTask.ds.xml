@@ -1,0 +1,14 @@
+<DataSource ID="NavigateSplitPaneTask" inheritsFrom="ComponentTask" Constructor="NavigateSplitPaneTask">
+    <fields>
+        <field name="targetPane" type="text" xmlAttribute="true">
+            <valueMap>
+                <value>navigation</value>
+                <value>list</value>
+                <value>detail</value>
+            </valueMap>
+        </field>
+        <field name="title" type="text"/>
+        <field name="showRecursively" type="boolean" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

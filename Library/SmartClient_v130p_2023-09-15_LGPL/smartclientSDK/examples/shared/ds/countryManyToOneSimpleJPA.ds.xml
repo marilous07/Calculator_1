@@ -1,0 +1,9 @@
+<DataSource isSampleDS="true"
+    ID="countryManyToOneSimpleJPA"
+    serverType="jpa"
+    beanClassName="com.isomorphic.examples.server.jpa.relations.CountryManyToOneSimple"
+    schemaBean="com.isomorphic.examples.server.jpa.relations.CountryManyToOneSimple"
+    autoDeriveSchema="true"
+>
+</DataSource>
+

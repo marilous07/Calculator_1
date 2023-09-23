@@ -1,0 +1,12 @@
+<DataSource	ID="ScreenLoader" inheritsFrom="VLayout" Constructor="ScreenLoader">
+    <fields>
+        <Field name="screenName"          type="string" basic="true" canEdit="false"/>
+        <Field name="screenLoaderURL"     type="url"/>
+        <field name="dataContextBinding"  type="Object" propertiesOnly="true"
+               flattenSingleChild="false" xmlExplicitSimpleTypes="true"/>
+    </fields>
+
+    <methods>
+        <method name="dataContextChanged" title="Screen Inputs Changed" basic="true" />
+    </methods>
+</DataSource>

@@ -1,0 +1,16 @@
+<DataSource
+        ID="aggregationJoin_order"
+        serverType="sql"
+        tableName="aggregation_order"
+>
+    <fields>
+        <field name="orderID" type="sequence" primaryKey="true" hidden="true" canEdit="false" foreignKey="aggregationJoin_orderItem.orderID"/>
+        <field name="customerName" type="text"/>
+        <field name="orderDate" type="date" />
+        <field name="trackingNumber" type="integer" />
+        <field name="itemCount"     type="integer"   hidden="false"
+               includeFrom="aggregationJoin_orderItem.pk" includeSummaryFunction="count" />
+        <field name="items"     type="text"
+               includeFrom="aggregationJoin_orderItem.itemDescription" includeSummaryFunction="concat" />
+    </fields>
+</DataSource>

@@ -1,0 +1,7 @@
+<DataSource ID="SendSMSTask" inheritsFrom="ProcessElement" Constructor="SendSMSTask">
+    <fields>
+        <field name="to" type="text" xmlAttribute="true" />
+        <field name="message" type="text" />
+        <field name="failureElement" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>

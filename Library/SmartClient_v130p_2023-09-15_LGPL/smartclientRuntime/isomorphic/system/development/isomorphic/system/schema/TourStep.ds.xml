@@ -1,0 +1,65 @@
+<DataSource ID="TourStep" inheritsFrom="UserTask" Constructor="TourStep">
+    <fields>
+        <field name="title" type="text" xmlAttribute="true" />
+        <field name="instructions" type="text" />
+        <!-- Alternative to instructions -->
+        <field name="contents" type="text" />
+
+        <!-- Target(s) -->
+        <field name="target" type="text" />
+        <field name="dropTarget" type="text" />
+        <field name="afterInputTarget" type="text" />
+
+        <field name="allowDropOnDescendants" type="boolean" />
+
+        <!-- Action -->
+        <field name="actionType" type="enum">
+            <valueMap>
+                <value>click</value>
+                <value>doubleClick</value>
+                <value>mouseOver</value>
+                <value>drag</value>
+                <value>change</value>
+                <value>none</value>
+                <value>any</value>
+            </valueMap>
+        </field> 
+		<field name="autoComplete" type="boolean" />
+
+        <!-- Appearance -->
+        <field name="showOutline" type="boolean" xmlAttribute="true" />
+        <field name="showPointer" type="boolean" xmlAttribute="true" />
+        <field name="showArrow" type="boolean" xmlAttribute="true" />
+
+        <!-- Tour window overrides -->
+        <field name="windowDefaults" type="Canvas" propertiesOnly="true" />
+
+        <!-- Process state binding -->
+        <field name="bindEnteredText" type="text" />
+
+        <!-- Pointer - passed thru to window -->
+        <field name="pointerSnapTo" type="text" xmlAttribute="true" />
+
+        <!-- Buttons - passed thru to window -->
+        <field name="showCancelButton" type="boolean" xmlAttribute="true" />
+        <field name="cancelButtonTitle" type="text" xmlAttribute="true" />
+        <field name="showActionButton" type="boolean" xmlAttribute="true" />
+        <field name="actionButtonTitle" type="text" xmlAttribute="true" />
+
+        <!-- actionType:"change" properties -->
+        <field name="expectedValue" type="any" />
+        <field name="expectedValueCaseSensitive" type="boolean" />
+        <field name="inputValidation" type="enum">
+            <valueMap>
+                <value>strict</value>
+                <value>notify</value>
+                <value>onExit</value>
+            </valueMap>
+        </field> 
+        <field name="showInputValidationMessage" type="boolean" />
+        <field name="inputValidationNotifyDelay" type="integer" />
+        <field name="inputValidationNotifyMessage" type="text" />
+
+    </fields>
+</DataSource>
+

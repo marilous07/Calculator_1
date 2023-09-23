@@ -1,0 +1,18 @@
+<DataSource ID="ProcessElement" Constructor="ProcessElement">
+    <fields>
+        <field name="ID" type="string" xmlAttribute="true" />
+        <field name="description" type="string" xmlAttribute="true" />
+        <field name="nextElement" type="string" xmlAttribute="true" />
+        <!-- Don't serialize mockMode. If editing a screen with mockMode enabled this
+             doesn't mean we want mockMode always enabled -->
+        <!-- <field name="mockMode" type="boolean" xmlAttribute="true" /> -->
+        <field name="bindOutput" type="string" />
+
+        <field name="forceSingle" type="boolean" />
+
+        <!-- Used when ProcessElement is the target of a ComponentXML event -->
+        <field name="mapping" type="string" multiple="true"
+               xmlAttribute="true" commaSeparated="true"/>
+    </fields>
+</DataSource>
+

@@ -1,0 +1,11 @@
+<DataSource ID="SetTitleTask" inheritsFrom="ComponentTask" Constructor="SetTitleTask">
+    <fields>
+        <field name="targetTabName" type="text" xmlAttribute="true" />
+        <field name="targetFieldName" type="text" xmlAttribute="true" />
+        <field name="targetSectionName" type="text" xmlAttribute="true" />
+        <field name="targetSectionTitle" type="text" xmlAttribute="true" />
+        <field name="title" type="text"/>
+        <field name="textFormula" type="UserSummary"/>
+    </fields>
+</DataSource>
+

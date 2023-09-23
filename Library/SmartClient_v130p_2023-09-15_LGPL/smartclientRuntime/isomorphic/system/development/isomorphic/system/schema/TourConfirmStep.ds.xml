@@ -1,0 +1,32 @@
+<DataSource ID="TourConfirmStep" inheritsFrom="UserTask" Constructor="TourConfirmStep">
+    <fields>
+        <field name="title" type="text" xmlAttribute="true" />
+        <field name="instructions" type="text" />
+        <!-- Alternative to instructions -->
+        <field name="contents" type="text" />
+
+        <field name="windowDefaults" type="Canvas" propertiesOnly="true" />
+
+        <!-- Pointer - passed thru to window -->
+        <field name="showPointer" type="boolean" xmlAttribute="true" />
+        <field name="pointerSnapTo" type="text" xmlAttribute="true" />
+
+        <!-- Target - passed thru to window -->
+        <field name="pointerTarget" type="text" />
+        <field name="targetSnapTo" type="text" xmlAttribute="true" />
+        <field name="targetOffsetInto" type="integer" />
+
+        <!-- Buttons - passed thru to window -->
+        <field name="showCancelButton" type="boolean" xmlAttribute="true" />
+        <field name="cancelButtonTitle" type="text" xmlAttribute="true" />
+        <field name="showActionButton" type="boolean" xmlAttribute="true" />
+        <field name="actionButtonTitle" type="text" xmlAttribute="true" />
+
+        <!-- "Action" element -->
+        <field name="nextElement" type="string" xmlAttribute="true" />
+
+        <!-- "Cancel" element -->
+        <field name="failureElement" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

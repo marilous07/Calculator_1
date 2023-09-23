@@ -1,0 +1,21 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "calc-app",
+  "main": "ISC_AceEditor.js",
+  "scripts": {
+    "test": "mm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "cal-app"
+  },
+  "keywords": [
+    "1234"
+  ],
+  "author": "mm",
+  "license": "ISC",
+  "dependencies": {
+    "smartclient-eval": "^0.9.19"
+  }
+}

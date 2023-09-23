@@ -1,0 +1,21 @@
+<DataSource ID="DSRequest">
+    <fields>
+        <field name="exportAs" type="string" xmlAttribute="true">
+            <valueMap>
+                <value>csv</value>
+                <value>xml</value>
+                <value>json</value>
+                <value>xls</value>
+                <value>ooxml</value>
+                <value>custom</value>
+            </valueMap>
+        </field> 
+        <field name="exportDisplay" type="string" xmlAttribute="true">
+            <valueMap>
+                <value>download</value>
+                <value>window</value>
+                <value>return</value>
+            </valueMap>
+        </field> 
+    </fields>
+</DataSource>

@@ -1,0 +1,29 @@
+<DataSource
+    ID="filteredAggregation_orderItem"
+    serverType="sql"
+    tableName="dynRepOrderItem"
+>
+    <fields>
+        <field name="orderID" type="integer" />
+        <field name="orderDate" type="date" />
+        <field name="itemID" type="integer" foreignKey="supplyItem.itemID" primaryKey="true" />
+        <field name="quantity" type="integer" />
+        <field name="itemName" includeFrom="supplyItem.itemName" />
+        <field name="SKU" includeFrom="supplyItem.SKU" />
+        <field name="unitCost" includeFrom="supplyItem.unitCost" format="#,##0.00" />
+        <field name="totalSales" type="float" format="#,##0.00"
+               customSelectExpression="quantity * supplyItem.unitCost" />
+    </fields>
+    
+    <operationBindings>
+        <operationBinding operationId="summary" operationType="fetch">
+            <groupBy>itemID,itemName,SKU,unitCost</groupBy>
+            <summaryFunctions>
+                <quantity>sum</quantity>
+                <totalSales>sum</totalSales>
+            </summaryFunctions>
+        </operationBinding>
+    </operationBindings>
+    
+</DataSource>
+ 

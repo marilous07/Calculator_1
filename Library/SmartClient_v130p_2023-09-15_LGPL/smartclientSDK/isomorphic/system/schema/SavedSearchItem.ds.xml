@@ -1,0 +1,43 @@
+<DataSource ID="SavedSearchItem" inheritsFrom="SelectItem" Constructor="SavedSearchItem">
+	<fields>
+		<field name="canAddSearch" type="boolean"/>
+		<field name="addSearchValue" type="string"/>
+		<field name="addSearchIcon" type="SCImgURL"/>
+		<field name="targetEditsCriteria" type="boolean"/>
+		<field name="canModifyProperty" type="string"/>
+		<field name="editSearchField" type="ListGridField"/>
+		<field name="editSearchHoverText" type="string"/>
+		<field name="removeSearchHoverText" type="string"/>
+		<field name="copySearchHoverText" type="string"/>
+		<field name="markAsDefaultHoverText" type="string"/>
+		<field name="canEditSearch" type="boolean"/>
+		<field name="canRemoveSearch" type="boolean"/>
+		<field name="canCopySearch" type="boolean"/>
+		<field name="targetComponent" type="Canvas"/>
+		<field name="targetDataSource" type="DataSource" idAllowed="true" hidden="false"
+            editorType="ProjectDataSourcePicker" basic="true"/>
+
+		<field name="confirmRemoval" type="boolean"/>
+		<field name="confirmRemovalMessage" type="string"/>
+		<field name="editSearchWindow" type="EditSearchWindow"/>
+		<field name="adminRole" type="string"/>
+		<field name="newRecordValues" type="Record"/>
+		<field name="saveLastSearch" type="boolean"/>
+		<field name="saveDefaultSearch" type="boolean"/>
+		<field name="storedState" type="SavedSearchStoredState"/>
+		<field name="offlineStorageKey" type="string"/>
+		<field name="adminSeparatorRecord" type="ListGridRecord"/>
+	</fields>
+    <methods>
+        <method action="event" name="searchChanged" basic="true" whenRuleTip="true" />
+    </methods>
+
+
+	<types>
+		<type ID="SavedSearchStoredState"		inheritsFrom="enum"	 >
+			<valueMap>
+				<value>criteria</value>
+			</valueMap>
+		</type>	
+    </types>
+</DataSource>

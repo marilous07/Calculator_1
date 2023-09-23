@@ -1,0 +1,15 @@
+<DataSource ID="ReifyTour" inheritsFrom="Tour" Constructor="ReifyTour">
+    <fields>
+        <field name="showRevertOption" type="boolean" xmlAttribute="true" />
+        <field name="resetUIAtStart" type="boolean" xmlAttribute="true" />
+        <field name="startWithNewScreen" type="enum" xmlAttribute="true">
+            <valueMap>
+                <value>no</value>
+                <value>always</value>
+                <value>prompt</value>
+            </valueMap>
+        </field>
+        <field name="newScreenContent" type="text" />
+        <field name="requiresDataSources" type="text" xmlAttribute="true" />
+    </fields>
+</DataSource>

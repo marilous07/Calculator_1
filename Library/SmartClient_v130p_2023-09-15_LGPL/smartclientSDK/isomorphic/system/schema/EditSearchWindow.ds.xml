@@ -1,0 +1,5 @@
+<DataSource     ID="EditSearchWindow" inheritsFrom="Window" Constructor="EditSearchWindow">
+	<fields>
+        <field name="savedSearchEditor" type="SavedSearchEditor"/>
+	</fields>
+</DataSource>

@@ -1,0 +1,15 @@
+<DataSource ID="Project" Constructor="ReifyProject">
+    <fields>
+        <field name="screens" type="ScreenTree" />
+        <field name="currentScreenFileName" type="string" />
+        <field name="datasources" type="Record" multiple="true" />
+        <field name="runConfigurations" type="Record" multiple="true" />
+        <field name="authentication" type="ProjectAuthentication" />
+        <field name="skin" type="string" />
+        <field name="skinUrl" type="string" />
+        <field name="density" type="string" />
+
+        <!-- backcompat -->
+        <field name="currentScreenID" type="any" />
+    </fields>
+</DataSource>

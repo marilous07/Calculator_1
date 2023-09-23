@@ -1,0 +1,17 @@
+<DataSource ID="RibbonGroup" inheritsFrom="Layout" Constructor="RibbonGroup">
+    <fields>
+		<field name="title" type="text" title="Title" basic="true"/>
+		<field name="titleOrientation" type="valignEnum" title="Title Orientation" basic="true" />
+		<field name="titleAlign" type="alignEnum" title="Title Align" basic="true" />
+		<field name="titleHeight" type="int" title="Title Height" basic="true"/>
+		<field name="numRows" type="number" title="Row Count" basic="true"/>
+		<field name="rowHeight" type="number" title="Row Height" basic="true"/>
+
+        <field name="controls" type="Canvas" multiple="true" propertiesOnly="true" basic="true"/>
+        
+		<field name="autoSizeToTitle" type="boolean" title="Size to Title" basic="true"/>
+
+        <!-- exclusions -->
+        <field name="members" inapplicable="true"/>
+    </fields>
+</DataSource>

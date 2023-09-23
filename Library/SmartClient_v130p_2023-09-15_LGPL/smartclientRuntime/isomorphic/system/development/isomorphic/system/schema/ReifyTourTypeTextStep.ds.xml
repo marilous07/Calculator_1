@@ -1,0 +1,5 @@
+<DataSource ID="ReifyTourTypeTextStep" inheritsFrom="TourStep" Constructor="ReifyTourTypeTextStep">
+    <fields>
+        <field name="text" type="text" />
+    </fields>
+</DataSource>

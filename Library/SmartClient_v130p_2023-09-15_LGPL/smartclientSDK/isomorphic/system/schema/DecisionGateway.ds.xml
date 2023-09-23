@@ -1,0 +1,4 @@
+<DataSource ID="DecisionGateway" inheritsFrom="MultiDecisionTask" Constructor="DecisionGateway">
+    <!-- deprecated -->
+    <field name="criteriaMap" type="Object" />
+</DataSource>

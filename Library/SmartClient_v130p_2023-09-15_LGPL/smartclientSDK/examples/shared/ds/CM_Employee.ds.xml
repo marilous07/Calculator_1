@@ -1,0 +1,43 @@
+<DataSource serverType="sql"
+    ID="CM_Employee"
+    tableName="employees">
+
+    <title>Employee</title>
+    <description>
+        The company has 23 employees: 6 Execs and 17 Sales Reps, all assigned to one of the company’s seven offices. Sales Reps are also assigned to a number of
+        customers (distributors) in their respective geographies that they sell to. New Sales Reps (that are still in training) don’t have customers assigned to them.
+        Each Sales Rep reports to the Sales Manager for his/her territory. The only exceptions are the two Sales Reps in the Tokyo office. One of them acts as a
+        Sales Manager and reports directly to the VP of Sales. The second one reports to him.
+       
+        The Execs: President, VP Sales, VP Marketing, Sales Manager (JAPAN, APAC), Sales Manager (EMEA), Sales Manager (NA) don’t work directly with customers.
+        Each Sales Manager reports to the VP of Sales. Nobody reports to the VP of Marketing. The two VPs report to the company’s President.
+    </description>
+
+    <useAnsiJoins>true</useAnsiJoins>
+    <fields>
+        <field name="employeeNumber" type="sequence" primaryKey="true" editRequires="false" />
+        <field name="lastName" type="text" length="50" required="true" />
+        <field name="firstName" type="text" length="50" required="true" />
+        <field name="extension" type="text" length="10" required="true" />
+        <field name="email" type="text" length="100" required="true">
+            <validators>
+                <validator type="isUnique" />
+            </validators>
+        </field>
+        <field name="officeCode" title="Office" type="text" length="10" required="true"
+               foreignKey="CM_Office.officeCode" joinType="outer"
+               displayField="officeLocation" />
+        <field name="officeLocation" includeFrom="CM_Office.city" hidden="true" />
+
+        <field name="reportsTo" type="integer"
+               foreignKey="CM_Employee.employeeNumber"
+               joinType="outer"
+               displayField="reportsToEmployeeName" 
+               foreignDisplayField="lastName" />
+        <field name="reportsToEmployeeName" includeFrom="CM_Employee.lastName" hidden="true" />
+
+        <field name="jobTitle" type="text" length="50" required="true" />
+
+    </fields>
+
+</DataSource>

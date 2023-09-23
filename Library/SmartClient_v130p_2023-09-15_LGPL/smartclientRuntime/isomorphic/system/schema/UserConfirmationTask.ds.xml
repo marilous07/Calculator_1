@@ -1,0 +1,7 @@
+<DataSource ID="UserConfirmationTask" inheritsFrom="ProcessElement" Constructor="UserConfirmationTask">
+    <fields>
+        <field name="message" type="string" />
+        <field name="textFormula" type="UserSummary"/>
+        <field name="failureElement" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>

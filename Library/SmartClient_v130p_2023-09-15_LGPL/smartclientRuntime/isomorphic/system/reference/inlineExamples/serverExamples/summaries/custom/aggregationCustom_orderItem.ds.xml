@@ -1,0 +1,22 @@
+<DataSource
+        ID="aggregationCustom_orderItem"
+        serverType="sql"
+        tableName="aggregation_orderItem"
+>
+    <fields>
+        <field name="pk" type="sequence" primaryKey="true" hidden="false" />
+        <field name="orderID" type="integer" canEdit="false" foreignKey="aggregationCustom_order.orderID"/>
+        <field name="orderCustomerName" type="text" canEdit="false" includeFrom="aggregationCustom_order.customerName"/>
+        <field name="orderDate" type="text" canEdit="false" includeFrom="aggregationCustom_order.orderDate"/>
+        <field name="itemDescription" type="text" />
+        <field name="quantity" type="integer" />
+        <field name="unitPrice" type="float" />
+        <field name="amount" type="float" customSQLExpression="quantity*unitPrice" format="#,##0.00" />
+    </fields>
+    <operationBindings>
+        <operationBinding operationType="fetch" operationId="customAggregation">
+            <serverObject lookupStyle="new" methodName="fetch"
+                className="com.isomorphic.examples.server.summaries.OrderItemDMI" />
+        </operationBinding>
+    </operationBindings>
+</DataSource>

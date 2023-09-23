@@ -1,0 +1,14 @@
+<DataSource ID="PointerSettings">
+    <fields>
+        <field name="snapTo" type="text" />
+        <field name="snapOffsetTop" type="integer" />
+        <field name="snapOffsetLeft" type="integer" />
+        <field name="cornerOffset" type="integer" />
+
+        <!-- Target -->
+        <field name="targetSnapTo" type="text" />
+        <field name="targetOffsetInto" type="integer" />
+        <field name="targetOffsetTop" type="integer" />
+        <field name="targetOffsetLeft" type="integer" />
+    </fields>
+</DataSource>

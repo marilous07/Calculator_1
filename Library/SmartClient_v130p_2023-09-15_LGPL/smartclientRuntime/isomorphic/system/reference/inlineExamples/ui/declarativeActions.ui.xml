@@ -1,0 +1,58 @@
+<HLayout
+    ID="pageLayout"
+    width="100%"
+    height="100%"
+    membersMargin="15">
+    <members>        
+        <ListGrid
+            ID="exportGrid"
+            dataSource="employees"
+            selectionType="single">
+            <fields>
+                <ListGridField name="EmployeeId"/>
+                <ListGridField name="Name"/>
+                <ListGridField name="Job"/>
+                <ListGridField name="Email"/>
+                <ListGridField name="EmployeeType"/>
+                <ListGridField name="Salary"/>
+                <ListGridField name="OrgUnit"/>
+            </fields>   
+        </ListGrid>        
+        <VLayout
+            ID="hLayout"
+            width="200"
+            height="100%"
+            membersMargin="30">
+            <members>
+                <IButton
+                    ID="fetchButton"
+                    title="Fetch"
+                    width="150">
+                    <click>
+                        <Action target="exportGrid" name="fetchData"/>
+                    </click>
+                </IButton>
+                <IButton
+                    ID="removeSelectedButton"
+                    title="Remove Selected"
+                    width="150"
+                    disabled="true">
+                    <enableWhen fieldName="exportGrid.anySelected" />
+                    <click>
+                        <Action target="exportGrid" name="removeSelectedData"/>
+                    </click>
+                </IButton>
+                <IButton
+                    ID="exportButton"
+                    title="Export"
+                    width="150">
+                    <click>
+                        <Action target="exportGrid" name="exportClientData"/>
+                    </click>
+                </IButton>
+            </members>
+        </VLayout>            
+    </members>
+</HLayout>
+
+

@@ -1,0 +1,15 @@
+<DataSource isSampleDS="true"
+    ID="moneyTransferFK"
+    serverType="sql"
+    tableName="moneyTransfer"
+    >
+    <fields>
+        <field name="id" type="integer" primaryKey="true"
+               foreignKey="receipt.id"
+               otherFKs="invoice.id"/>
+        <field name="name" type="text" />
+        <field name="paymentAmount" type="float" />
+        <field name="receiptInfo" includeFrom="receipt.info"/>
+        <field name="invoiceInfo" includeFrom="invoice.info"/>
+    </fields>
+</DataSource>

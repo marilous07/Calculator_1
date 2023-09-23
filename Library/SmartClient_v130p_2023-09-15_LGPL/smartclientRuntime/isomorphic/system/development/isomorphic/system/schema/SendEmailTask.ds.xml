@@ -1,0 +1,9 @@
+<DataSource ID="SendEmailTask" inheritsFrom="ProcessElement" Constructor="SendEmailTask">
+    <fields>
+        <field name="to" type="text" xmlAttribute="true" />
+        <field name="subject" type="text" />
+        <field name="subjectFormula" type="UserSummary" />
+        <field name="message" type="text" />
+        <field name="failureElement" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>

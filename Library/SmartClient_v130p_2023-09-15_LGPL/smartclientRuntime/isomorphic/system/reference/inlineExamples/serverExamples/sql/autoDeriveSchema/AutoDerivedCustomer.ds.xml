@@ -1,0 +1,49 @@
+<DataSource serverType="sql"
+    ID="AutoDerivedCustomer"
+    tableName="customers"
+    useAnsiJoins="true">
+
+    <autoDeriveSchema>true</autoDeriveSchema>
+
+    <fields>
+        <field name="salesRepEmployeeNumber"
+               foreignKey="CM_Employee.employeeNumber" joinType="outer"
+               displayField="salesRepEmployeeName"
+               title="Sales Rep"/>
+        <field name="salesRepEmployeeName" includeFrom="CM_Employee.lastName" />
+
+        <field name="territory" includeFrom="CM_Employee.CM_Office.territory" />
+    </fields>
+
+<!--
+  // Following are the fields as defined on CM_Customer, which does not showcase the autoDeriveSchema feature.
+  // Note that the missing fields are inherited from SQL metadata, although they are named with an UPPERCASE form
+  // instead of the mixedCase form seen in CM_Customer, because the sample HSQL database stores its metadata that way.
+  // So for example, the customerNumber field must be referred to as CUSTOMERNUMBER as in the
+  // "AutoDerived SQLDataSource" example.
+  //
+  // Note also that while we explicitly define a 'salesRepEmployeeNumber' field, we need not define its type.  The
+  // correct type (integer) will be inferred from the table definition.
+  -->
+<!--    <fields>-->
+<!--        <field name="customerNumber" type="sequence" primaryKey="true" />-->
+<!--        <field name="customerName" type="text" length="50" required="true" />-->
+<!--        <field name="contactLastName" type="text" length="50" required="true" />-->
+<!--        <field name="contactFirstName" type="text" length="50" required="true" />-->
+<!--        <field name="phone" type="text" length="50" required="true" />-->
+<!--        <field name="addressLine1" type="text" length="50" required="true"/>-->
+<!--        <field name="addressLine2" type="text" length="50" />-->
+<!--        <field name="city" type="text" length="50" required="true"/>-->
+<!--        <field name="state" type="text" length="50" />-->
+<!--        <field name="postalCode" type="text" length="15" />-->
+<!--        <field name="country" type="text" length="50" required="true"/>-->
+<!--        <field name="salesRepEmployeeNumber" type="integer"-->
+<!--               foreignKey="CM_Employee.employeeNumber" joinType="outer"-->
+<!--               displayField="salesRepEmployeeName"-->
+<!--               title="Sales Rep"/>-->
+<!--        <field name="salesRepEmployeeName" includeFrom="CM_Employee.lastName" />-->
+<!--        <field name="creditLimit" type="float" />-->
+<!--        <field name="territory" includeFrom="CM_Employee.CM_Office.territory" />-->
+<!--    </fields>-->
+
+</DataSource>

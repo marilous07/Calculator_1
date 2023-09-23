@@ -1,0 +1,6 @@
+<DataSource ID="TriplePane" inheritsFrom="SplitPane" Constructor="TriplePane">
+    <fields>
+        <field name="showListToolStrip" type="boolean" basic="true"/>
+        <field name="autoNavigate" type="boolean" xmlAttribute="true"/>
+    </fields>
+</DataSource>

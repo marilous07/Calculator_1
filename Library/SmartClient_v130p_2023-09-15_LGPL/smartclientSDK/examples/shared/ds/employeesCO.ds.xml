@@ -1,0 +1,143 @@
+<DataSource
+    ID="employeesCO"
+    clientOnly="true"
+>
+    <fields>
+        <field name="name"            type="text"           length="128"      required="true"/>
+        <field name="employeeId"      type="sequence"       primaryKey="true" hidden="true"/>
+        <field name="reportsTo"       type="text"           title="Reports To"    foreignKey="employeesCO.employeeId"  rootValue="1"  />        
+        <field name="job"             title="Job Title"     type="text"       length="128"/> 
+        <field name="salary"          title="Salary"        type="float"      viewRequiresRole="HR,CEO"    editRequiresRole="CEO"/>
+    </fields>
+
+    <operationBindings>
+        <operationBinding operationType="remove" requiresRole="CEO" />
+    </operationBindings>
+    
+    <testData>
+        <employee>
+            <employeeId>4</employeeId>
+            <reportsTo>1</reportsTo>
+            <name>Charles Madigen</name>
+            <job>Chief Operating Officer</job>
+            <salary>35000</salary>
+        </employee>
+        <employee>
+            <employeeId>188</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Rogine Leger</name>
+            <job>Mgr Syst P P</job>
+            <salary>25000</salary>
+        </employee>
+        <employee>
+            <employeeId>189</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Gene Porter</name>
+            <job>Mgr Tech Plng IntIS T</job>
+            <salary>18950</salary>
+        </employee>
+        <employee>
+            <employeeId>265</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Olivier Doucet</name>
+            <job>Asset Spec Lines Stns</job>
+            <salary>21500</salary>
+        </employee>                            
+        <employee>
+            <employeeId>264</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Cheryl Pearson</name>
+            <job>Dsl Sys Rep</job>
+            <salary>20000</salary>
+        </employee>
+        
+        <employee>
+            <employeeId>128</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Tamara Kane</name>
+            <job>Mgr Site Services</job>
+            <salary>11900</salary>
+        </employee>
+        <employee>
+            <employeeId>139</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Joan Little</name>
+            <job>Mgr Ther Gen</job>
+            <salary>18500</salary>
+        </employee>
+        <employee>
+            <employeeId>2465</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Rui Shu</name>
+            <job>Mrg Proj Del</job>
+            <salary>21000</salary>
+        </employee>                            
+        <employee>
+            <employeeId>2564</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Jhon Garrison</name>
+            <job>Mgr Site Services</job>
+            <salary>15500</salary>
+        </employee>
+        
+        <employee>
+            <employeeId>1488</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Abigail Meyler</name>
+            <job>Mgr Syst P P</job>
+            <salary>25000</salary>
+        </employee>
+        <employee>
+            <employeeId>1819</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Nancy Ferguson</name>
+            <job>Mgr Tech Plng IntIS T</job>
+            <salary>18500</salary>
+        </employee>
+        <employee>
+            <employeeId>2675</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Floyd Galvin</name>
+            <job>Asset Spec Lines Stns</job>
+            <salary>21500</salary>
+        </employee>                            
+        <employee>
+            <employeeId>2649</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Ren Hong</name>
+            <job>Dsl Sys Rep</job>
+            <salary>20000</salary>
+        </employee>
+        
+        <employee>
+            <employeeId>1858</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Isaac Galvin</name>
+            <job>Mgr Syst P P</job>
+            <salary>23500</salary>
+        </employee>
+        <employee>
+            <employeeId>1849</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Priya Sehgal</name>
+            <job>Mgr Tech Plng IntIS T</job>
+            <salary>14850</salary>
+        </employee>
+        <employee>
+            <employeeId>2615</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Rogine Leger</name>
+            <job>Asset Spec Lines Stns</job>
+            <salary>21200</salary>
+        </employee>                            
+        <employee>
+            <employeeId>2624</employeeId>
+            <reportsTo>4</reportsTo>
+            <name>Cheryl Pearson</name>
+            <job>Dsl Sys Rep</job>
+            <salary>20400</salary>
+        </employee>
+    </testData>
+    
+</DataSource>
+ 

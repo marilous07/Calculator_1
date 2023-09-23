@@ -1,0 +1,42 @@
+<DataSource ID="RibbonButton" inheritsFrom="Button" Constructor="RibbonButton">
+    <fields>
+		<!-- <field name="align" type="alignEnum" basic="true"/> -->
+		<field name="icon" type="SCImgURL" editorType="ImageChooserItem" title="Icon" basic="true"/>
+		<field name="largeIcon" type="SCImgURL" editorType="ImageChooserItem" title="Large Icon" basic="true"/>
+		<field name="largeIconSize" type="int" basic="true"/>
+		<field name="rowSpan" type="int" basic="true"/>
+		<field name="vertical" type="boolean" basic="true"/>
+		<!-- <field name="vertical" type="boolean" showNullAsTrue="true" basic="true"/> -->
+
+		<field name="showButtonTitle" type="boolean" basic="true"/>
+		<field name="showIcon" type="boolean" basic="true"/>
+
+		<field name="menuIconSrc" type="SCImgURL" editorType="ImageChooserItem" title="Menu Icon" basic="true"/>
+		<field name="menuIconHeight" type="int" basic="true"/>
+		<field name="menuIconWidth" type="int" basic="true"/>
+		<field name="showMenuIcon" type="boolean" basic="true"/>
+		<field name="showMenuOnClick" type="boolean" basic="true"/>
+		<field name="menu" type="Menu" title="Menu" basic="true"/>
+
+        <!-- exclusions -->
+		<field name="showTitle" inapplicable="true"/>
+		<field name="orientation" inapplicable="true" />
+		<field name="iconAlign" inapplicable="true"/>
+		<field name="iconOrientation" inapplicable="true"/>
+    </fields>
+    
+    <methods>
+        <method action="event" title="Click" name="click" basic="true" />
+        <method action="event" title="Icon Click" name="iconClick" basic="true" />
+        <method action="event" title="Menu-icon Click" name="menuIconClick" basic="true" />
+    </methods>
+
+    <groups>
+        <group>basics</group>
+        <group>button</group>
+        <group>icon</group>
+        <group>sizing</group>
+        <group>menu</group>
+    </groups>
+
+</DataSource>

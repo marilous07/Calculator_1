@@ -1,0 +1,6 @@
+<DataSource ID="GridViewSelectedDataTask" inheritsFrom="ComponentTask" Constructor="GridViewSelectedDataTask">
+    <fields>
+        <field name="selectionComponentId" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

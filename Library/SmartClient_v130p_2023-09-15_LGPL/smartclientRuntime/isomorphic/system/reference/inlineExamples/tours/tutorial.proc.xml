@@ -1,0 +1,155 @@
+<Tutorial ID="tutorial" showProgress="true">
+    <steps>
+        <TourStep title="Welcome">
+            <instructions><![CDATA[
+                Welcome to the Supply Catalog sample application!
+                <P>
+                This tutorial will show you how to use this application, and explain some of 
+                the framework features used to build it.
+            ]]></instructions>
+        </TourStep>
+
+        <TourStep title="Pick a Category">
+            <instructions><![CDATA[
+                Click on "Canteen & Washroom Products" in the tree to see the items in that category.
+            ]]></instructions>
+            <!-- tutorials will default to actionType "click" when a target is supplied -->
+            <target>//TreeGrid[ID="categoryTree"]/body/row[categoryName=Canteen%20and%20Washroom%20Products||0]/col[fieldName=nodeTitle||0]</target>
+        </TourStep>
+
+        <TourStep title="Pick a Catalog Item">
+            <instructions><![CDATA[
+                The grid now shows the items in the selected category.  Click on the item "Sugar White 1KG" to view details in the tab below.
+            ]]></instructions>
+            <target>//ListGrid[ID="itemList"]/body/row[itemID=1996||itemName=Sugar%20White%201KG||1]</target>
+        </TourStep>
+
+        <TourStep title="Switch to the Edit Tab">
+            <instructions><![CDATA[
+                Click on the Edit tab to start editing this item.
+            ]]></instructions>
+            <target>//TabSet[ID="itemDetailTabs"]/tab[title=Edit||ID=editTab||index=1]/</target>
+        </TourStep>
+
+        <!-- A ScriptTask allows you to run some logic during the tutorial. In this case we're
+             dynamically determining a new value for the 'unitCost' field and storing it
+             as the "newCost" variable, for use later -->
+        <ScriptTask ID="calculateNewCost" outputField="newCost">
+            <execute><![CDATA[
+                var sugar = itemList.getSelectedRecord(),
+                    cost = sugar.unitCost;
+                if (isc.isA.Number(cost)) {
+                    cost = Math.floor(cost) + 1.99
+                } else cost = 2.99;
+
+                this.setOutputData(cost);
+
+            ]]></execute>
+        </ScriptTask>
+
+
+        <!-- this step prompts a user to perform two actions:
+            enter a specific value into the target FormItem, and then click the "Save" button
+            Note the ${newCost} syntax for accessing the variable we set up earlier -->
+        <TourStep title="Change the cost and save it">
+            <instructions><![CDATA[
+                Prices are going up!  Enter "${newCost}" for the cost, and hit save.
+            ]]></instructions>
+            <actionType>change</actionType>
+            <target>//DynamicForm[ID="editForm"]/item[name=unitCost||title=Unit%20Cost||value=1.22||index=5||Class=SpinnerItem]</target>
+            <afterInputTarget>//DynamicForm[ID="editForm"]/item[name=savebtn||title=Save%20Item||index=8||Class=ButtonItem]/button/</afterInputTarget>
+            <expectedValue>${newCost}</expectedValue>
+        </TourStep>
+
+        <TourStep title="Notice auto-update">
+            <instructions><![CDATA[
+                Note how the grid has updated to reflect the new cost.
+                <P>
+                This is automatically done by the data binding system, no code required!
+            ]]></instructions>
+            <target>//ListGrid[ID="itemList"]/body/row[itemID=1996||itemName=Sugar%20White%201KG||unitCost=${newCost}||1]/col[fieldName=unitCost||5]</target>
+            <!-- for this step we're highlighting a cell in the grid.
+                 we're not prompting the user to actually interact with it -->
+            <actionType>none</actionType>
+        </TourStep>
+
+
+        <TourStep title="Let's do a drag">
+            <instructions><![CDATA[
+                We've decided sugar is more of a First Aid item!  
+                Drag the sugar record onto the "First Aid" node in the tree to change its category.
+            ]]></instructions>
+            <target>//ListGrid[ID="itemList"]/body/row[itemID=1996||itemName=Sugar%20White%201KG||1]</target>
+            <dropTarget>//TreeGrid[ID="categoryTree"]/body/row[categoryName=First%20Aid||3]/col[fieldName=nodeTitle||0]</dropTarget>
+            <actionType>drag</actionType>
+        </TourStep>
+
+        <TourStep title="It vanished!">
+            <instructions>
+                Note how the record disappeared from the grid!  That's another automatic behavior 
+                - it doesn't match the criteria on the grid anymore, so it's removed.
+            </instructions>
+            <target>//ListGrid[ID="itemList"]/body/</target>
+            <actionType>none</actionType>
+        </TourStep>
+
+
+        <TourStep title="Change category">
+            <instructions>
+                Click on the "First Aid" category in the tree so we can go find our record again
+            </instructions>
+            <target>//TreeGrid[ID="categoryTree"]/body/row[categoryName=First%20Aid||3]/col[fieldName=nodeTitle||0]</target>
+        </TourStep>
+
+        <TourStep title="There it is">
+            <instructions><![CDATA[
+                There's our record!  That category change was actually codeless too - 
+                the framework understands what the drag must mean, based on the relation declared 
+                between the DataSource for the tree and the DataSource for the list. 
+                <P>
+                Of course, you can override the default behavior, or add to it!
+            ]]></instructions>
+            <target>//ListGrid[ID="itemList"]/body/row[itemID=1996||itemName=Sugar%20White%201KG||0]/</target>
+            <actionType>none</actionType>
+        </TourStep>
+
+        <TourStep title="Let's play with layouts">
+            <instructions>
+                First, select the "Computer Consumables" category - it's got a lot of records
+            </instructions>
+            <target>//TreeGrid[ID="categoryTree"]/body/row[categoryName=Computer%20Consumables||1]/col[fieldName=nodeTitle||0]</target>
+        </TourStep>
+
+        <TourStep title="Collapse the tree">
+            <instructions>Click the arrow on the resize bar to collapse the tree</instructions>
+            <target>//SplitPane[ID="pageLayout"]/resizeBar[Class=Snapbar||index=0||length=1||classIndex=0||classLength=1]/</target>
+        </TourStep>
+
+        <TourStep title="Shrink the detail area">
+            <instructions><![CDATA[
+                Drag the Item Details section header to give yourself more room for the items grid.
+            ]]></instructions>
+            <target>//SplitPane[ID="pageLayout"]/rightLayout/resizeBar[Class=Snapbar||index=0||length=1||classIndex=0||classLength=1]/</target>
+            <actionType>drag</actionType>
+            <autoComplete>false</autoComplete>
+        </TourStep>
+
+
+        <TourStep title="Look at all this room!">
+            <instructions><![CDATA[
+                Our fluid layouts make it easy for end users to reallocate screen space for 
+                their current task.  
+                Here again this doesn't require code - just put your components into layouts 
+                and these behaviors are automatic.
+            ]]></instructions>
+        </TourStep>
+        
+        <TourStep title="Thanks for trying the tutorial!">
+            <instructions><![CDATA[
+                There's so much more to explore, but we're going to stop here for now.  
+                Try another sample!
+            ]]></instructions>
+        </TourStep>
+
+    </steps>
+</Tutorial>

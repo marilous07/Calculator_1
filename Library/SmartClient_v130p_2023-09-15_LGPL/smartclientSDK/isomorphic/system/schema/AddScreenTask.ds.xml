@@ -1,0 +1,10 @@
+<DataSource ID="AddScreenTask" inheritsFrom="ComponentTask" Constructor="AddScreenTask">
+    <fields>
+        <Field name="screenName"          type="string"/>
+        <Field name="title"               type="string"/>
+        <field name="titleFormula"        type="UserSummary"/>
+        <field name="canClose"            type="boolean"/>
+        <field name="dataContextBinding"  type="Object" propertiesOnly="true"
+               flattenSingleChild="false" xmlExplicitSimpleTypes="true"/>
+    </fields>
+</DataSource>

@@ -1,0 +1,10 @@
+<DataSource
+        ID="invoice"
+        serverType="sql"
+        tableName="invoice"
+>
+    <fields>
+        <field name="id" type="integer" primaryKey="true"/>
+        <field name="info" type="text" />
+    </fields>
+</DataSource>

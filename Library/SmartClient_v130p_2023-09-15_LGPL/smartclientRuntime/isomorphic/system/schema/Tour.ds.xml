@@ -1,0 +1,42 @@
+<DataSource ID="Tour" inheritsFrom="Process" Constructor="Tour">
+    <fields>
+        <field name="autoReset" type="boolean" xmlAttribute="true" />
+        <field name="mode" type="string" xmlAttribute="true">
+            <valueMap>
+                <value>tour</value>
+                <value>tutorial</value>
+            </valueMap>
+        </field> 
+
+        <!-- steps in tour -->
+        <field name="steps" type="ProcessElement" multiple="true" />
+
+        <!-- optional steps to perform when canceling tour -->
+        <field name="cancelSteps" type="ProcessElement" multiple="true" />
+
+        <!-- Progress bar -->
+        <field name="showProgress" type="boolean" xmlAttribute="true" />
+        <field name="showProgressPercent" type="boolean" xmlAttribute="true" />
+        <field name="showProgressPercentInline" type="boolean" xmlAttribute="true" />
+
+        <!-- Outline appearance -->
+        <field name="outlineBorder" type="string" />
+        <field name="dropOutlineBorder" type="string" />
+
+        <!-- Input validation notification settings -->
+        <field name="notifyType" type="string" />
+        <field name="notifyMessageSettings" type="NotifySettings" propertiesOnly="true" />
+        <field name="showInputValidationMessage" type="boolean" />
+
+        <!-- Action button titles - applied to steps as needed -->
+        <field name="stepActionButtonTitle" type="string" />
+        <field name="firstStepActionButtonTitle" type="string" />
+        <field name="lastStepActionButtonTitle" type="string" />
+        <field name="stepCancelButtonTitle" type="string" />
+        <field name="firstStepCancelButtonTitle" type="string" />
+
+        <!-- Defaults applied to all TourSteps -->
+        <field name="windowDefaults" type="Canvas" propertiesOnly="true" />
+        <field name="allowDropOnDescendants" type="boolean" />
+    </fields>
+</DataSource>

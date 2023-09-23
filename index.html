@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Calculator using SmartClient</title>
+
+  <!-- SmartClient JavaScript -->
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Core.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Foundation.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Containers.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Grids.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Forms.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_DataBinding.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules/ISC_Calendar.js></SCRIPT>
+  <SCRIPT CHARSET="windows-1252" SRC=./SmartClient_v130p_2023-09-15_LGPL/smartclientSDK/isomorphic/system/modules//skins/EnterpriseBlue/load_skin.js></SCRIPT>
+
+  <!-- Your custom scripts -->
+  <script src="./history.js"></script>
+  <script src="./calculator.js"></script>
+  <script src="./tabs.js"></script>
+  <script src="./main.js"></script>
+
+</HEAD>
+<BODY bgcolor="#FFFFFF">
+
+  <noscript>
+    <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+      This application requires
+      JavaScript to be enabled in order 
+      to function properly.
+    </div>
+  </noscript>
+
+  <div id="tabs">
+    <button class="tablink" onclick="openTab('calculatorForm', this)">Calculator</button>
+    <button class="tablink" onclick="openTab('history', this)">History</button>
+  </div>
+
+  <!--<div id="calculator">
+    <div id="tab1">-->
+        <!-- Calculator -->
+        <div id="calculatorForm" class="tabcontent">
+            <input type="text" id="display" disabled />
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="performOperation('+')">+</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="performOperation('-')">-</button>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="performOperation('*')">*</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="performOperation('/')">/</button>
+          </div>         
+
+          
+
+    <!-- <div id="tab2">-->
+        <!-- ιστορικό -->
+        <div id="history" class="tabcontent"></div>
+    
+  
+
+</BODY>
+</HTML>

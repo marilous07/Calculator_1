@@ -1,0 +1,14 @@
+<DataSource ID="RangeSlider" inheritsFrom="Canvas" Constructor="RangeSlider">
+    <fields>
+        <field name="baseStyle"  type="cssClass"/>
+        <field name="startThumb" type="Snapbar" propertiesOnly="true"/>
+        <field name="endThumb"   type="Snapbar" propertiesOnly="true"/>
+        <field name="startValue" type="float"/>
+        <field name="endValue"   type="float"/>
+        <field name="maxValue"   type="float"/>
+        <field name="minValue"   type="float"/>
+        <field name="scrollbar"  type="Scrollbar" propertiesOnly="true"/>
+        <field name="track"      type="Canvas"    propertiesOnly="true"/>
+        <field name="vertical"   type="boolean"/>   
+    </fields>
+</DataSource>

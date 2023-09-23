@@ -1,0 +1,2 @@
+<DataSource ID="HandPlacedForm" inheritsFrom="DynamicForm" Constructor="HandPlacedForm">
+</DataSource>

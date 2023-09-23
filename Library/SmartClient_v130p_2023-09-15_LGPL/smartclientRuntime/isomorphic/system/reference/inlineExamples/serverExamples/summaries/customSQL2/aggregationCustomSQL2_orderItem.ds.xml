@@ -1,0 +1,36 @@
+<DataSource
+        ID="aggregationCustomSQL2_orderItem"
+        serverType="sql"
+        tableName="aggregation_orderItem"
+        useAnsiJoins="true"
+>
+    <fields>
+        <field name="pk" type="sequence" primaryKey="true" hidden="false" />
+        <field name="orderID" type="integer" canEdit="false" foreignKey="aggregationCustomSQL2_order.orderID" />
+        <field name="orderCustomerName" type="text" canEdit="false" includeFrom="aggregationCustomSQL2_order.customerName"/>
+        <field name="itemDescription" type="text" />
+        <field name="quantity" type="integer" />
+        <field name="unitPrice" type="float" />
+        <field name="amount" type="float" customSQLExpression="quantity*unitPrice" format="#,##0.00" />
+    </fields>
+    <operationBindings>
+        <operationBinding operationType="fetch" useHavingClause="false">
+            <groupBy>orderCustomerName,itemDescription</groupBy>
+            <summaryFunctions>
+                <quantity>sum</quantity>
+                <amount>sum</amount>
+            </summaryFunctions>
+            <customSQL><![CDATA[
+                SELECT *
+                 FROM (SELECT orderCustomerName, avg(amount) as amount
+                        FROM (SELECT $defaultSelectClause
+                                FROM $defaultTableClause $defaultAnsiJoinClause
+                               WHERE $defaultWhereClause
+                            GROUP BY $defaultGroupClause) first
+                        WHERE $sql.havingWithout("amount", "itemDescription")
+                        GROUP BY orderCustomerName) second
+                WHERE $sql.partialHaving("amount")
+            ]]></customSQL>
+        </operationBinding>
+    </operationBindings>
+</DataSource>

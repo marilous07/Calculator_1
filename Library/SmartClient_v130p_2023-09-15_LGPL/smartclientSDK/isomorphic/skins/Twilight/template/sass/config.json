@@ -1,0 +1,49 @@
+{
+    "settings":{
+        "$active_selected_bgColor":{
+            "transform":{
+                "derivesFrom":"$active_over_bgColor", 
+                "source":"#597dc0", 
+                "r":-14, 
+                "g":-7, 
+                "b":-17, 
+                "sass":"adjust-color($active_over_bgColor,$red:-14,$green:-7,$blue:-17)", 
+                "result":"#4b76af"
+            }
+        }, 
+        "$toolStripButton_selected_bgColor": {
+            "transform":{
+                "derivesFrom":"$standard_header_bgColor",
+                "sass":"adjust-color($standard_header_bgColor,$red:-10,$green:-10,$blue:-10)"
+            }
+        },
+        "$listGrid_summaryCell_bgColor": {
+            "transform":{
+                "derivesFrom":"$listGrid_cell_bgColor",
+                "sass":"adjust-color($listGrid_cell_bgColor,$red:-10,$green:-10,$blue:-10)"
+            }
+        },
+        "$formItem_bgColor":{
+            "transform":{
+                "derivesFrom":"$standard_widget_bgColor", 
+                "source":"#3c3f41", 
+                "r":9, 
+                "g":10, 
+                "b":9, 
+                "sass":"adjust-color($standard_widget_bgColor,$red:9,$green:10,$blue:9)", 
+                "result":"#45494a"
+            }
+        }, 
+        "$standard_header_bgColor":{
+            "transform":{
+                "derivesFrom":"$standard_bgColor", 
+                "source":"#3c3f41", 
+                "r":16, 
+                "g":17, 
+                "b":17, 
+                "sass":"adjust-color($standard_bgColor,$red:16,$green:17,$blue:17)", 
+                "result":"#4c5052"
+            }
+        }
+    }
+}

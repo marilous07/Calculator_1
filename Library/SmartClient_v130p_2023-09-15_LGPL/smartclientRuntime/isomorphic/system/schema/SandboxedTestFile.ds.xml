@@ -1,0 +1,4 @@
+<DataSource ID="SandboxedTestFile">
+    <field name="ownerId"  type="text" />
+    <field name="fileName" type="text" />
+</DataSource>

@@ -1,0 +1,14 @@
+<DataSource ID="DataView" inheritsFrom="VLayout" Constructor="DataView">
+    <fields>
+        <field name="operations" type="ServiceOperation" multiple="true"/>
+        <field name="minMemberLength" hidden="true"/>
+    </fields>
+    <methods>
+        <method name="drawn" title="Drawn" basic="true" />
+        <method name="dataContextChanged" title="Screen Inputs Changed" basic="true" />
+        <!--not active - was intended to allow taking action after DataView 
+            loaded WSDL and XML Schema
+        <method title="DataView Loaded" name="dataViewLoaded" />
+        -->
+    </methods>
+</DataSource>

@@ -1,0 +1,12 @@
+<List>
+
+    <record>
+        <id>1</id>
+        <info>First invoice info</info>
+    </record>
+    <record>
+        <id>2</id>
+        <info>Second invoice info</info>
+    </record>
+
+</List>

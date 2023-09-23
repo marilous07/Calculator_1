@@ -1,0 +1,18 @@
+<DataSource ID="TourWindow" inheritsFrom="Window" Constructor="TourWindow">
+    <fields>
+        <field name="title" type="text" xmlAttribute="true" />
+        <field name="contents" type="text" />
+
+        <!-- Buttons -->
+        <field name="showCancelButton" type="boolean" xmlAttribute="true" />
+        <field name="cancelButtonTitle" type="text" xmlAttribute="true" />
+        <field name="showActionButton" type="boolean" xmlAttribute="true" />
+        <field name="actionButtonTitle" type="text" xmlAttribute="true" />
+        <field name="actionButtonURL" type="text" />
+
+        <!-- Progress bar -->
+        <field name="showProgress" type="boolean" xmlAttribute="true" />
+        <field name="showProgressPercent" type="boolean" xmlAttribute="true" />
+        <field name="showProgressPercentInline" type="boolean" xmlAttribute="true" />
+    </fields>
+</DataSource>

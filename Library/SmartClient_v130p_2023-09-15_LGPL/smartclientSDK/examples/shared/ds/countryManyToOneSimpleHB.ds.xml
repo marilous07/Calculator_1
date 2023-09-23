@@ -1,0 +1,9 @@
+<DataSource isSampleDS="true"
+    ID="countryManyToOneSimpleHB"
+    serverType="hibernate"
+    beanClassName="com.isomorphic.examples.server.hibernate.relations.CountryManyToOneSimple"
+    schemaBean="com.isomorphic.examples.server.hibernate.relations.CountryManyToOneSimple"
+    autoDeriveSchema="true"
+>
+</DataSource>
+

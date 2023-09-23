@@ -1,0 +1,10 @@
+<DataSource ID="QuartzTimeZone"
+            serverConstructor="com.isomorphic.scheduler.QuartzTimeZone"
+            requires="$requestAttributes.schedulerOperationsEnabled == true"
+>
+
+    <fields>
+        <field name="ID" type="string" primaryKey="true"/>
+    </fields>
+
+</DataSource>

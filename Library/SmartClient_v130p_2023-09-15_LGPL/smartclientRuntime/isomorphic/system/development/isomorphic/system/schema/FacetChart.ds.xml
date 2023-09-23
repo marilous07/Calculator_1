@@ -1,0 +1,303 @@
+<DataSource ID="FacetChart" inheritsFrom="Canvas" Constructor="FacetChart">
+    <fields>
+        <field name="data" type="CellRecord" multiple="true" hidden="true"/>
+        <field name="facets" type="Facet" multiple="true" hidden="true"/>
+
+        <!-- Chart type/layout -->
+        <field name="chartType" type="ChartType" basic="true">
+			<valueMap>
+				<value>Area</value>
+				<value>Column</value>
+				<value>Bar</value>
+				<value>Line</value>
+				<value>Radar</value>
+				<value>Pie</value>
+				<value>Doughnut</value>
+				<!-- <value>Bubble</value> -->
+				<value>Histogram</value>
+				<!-- <value>Scatter</value> -->
+			</valueMap>
+        </field>
+        <field name="stacked" type="boolean" allowEmptyValue="true" basic="true"/>
+        <field name="filled" type="boolean" allowEmptyValue="true" basic="true"/>
+
+        <!-- Chart title -->
+        <field name="title" type="string" basic="true"/>
+        <field name="showTitle" type="boolean" basic="true"/>
+        <field name="centerTitle" type="boolean"/>
+        <field name="drawTitleBackground" type="boolean"/>
+        <field name="drawTitleBoundary" type="boolean"/>
+        <field name="titleAlign" type="anyAlignEnum"/>
+		<field name="titlePadding" type="positiveInteger"/>
+		<field name="titleRectHeight" type="positiveInteger"/>
+        <field name="titleProperties" type="DrawLabel" propertiesOnly="true"/>
+        <field name="titleBackgroundProperies" type="DrawLabel" propertiesOnly="true"/>
+        <field name="titleBoundaryProperties" type="DrawLine" propertiesOnly="true"/>
+
+        <!-- Labels and Titles -->
+        <field name="showValueAxisLabel" type="boolean" allowEmptyValue="true" basic="true"/>
+        <field name="showDataAxisLabel" type="boolean" allowEmptyValue="true" basic="true"/>
+        <field name="decimalPrecision" type="integer" title="Axis Label Precision"/>
+        <field name="valueTitle" type="string"/>
+        <field name="showDataLabels" type="boolean" defaultValue="true" recreateOnChange="true"/>
+        <field name="showDataValuesMode" type="ShowDataValuesMode" title="Show Labels for Values" basic="true"/>
+        <field name="autoRotateLabels" type="boolean"/>
+        <field name="rotateLabels" type="LabelRotationMode"/>
+        <field name="radarRotateLabels" type="LabelRotationMode"/>
+        <field name="valueAxisLabelProperties" type="DrawLabel" propertiesOnly="true"/>
+        <field name="dataAxisLabelProperties" type="DrawLabel" propertiesOnly="true"/>
+        <field name="dataLabelProperties" type="DrawLabel" propertiesOnly="true"/>
+        <field name="minLabelGap" type="positiveInteger"/>
+        <field name="showInlineLabels" type="boolean"/>
+
+
+        <!-- Chart Features -->
+        <field name="showChartRect" type="boolean" title="Show Data Area Border"/>
+        <field name="chartRectMargin" type="integer" title="Chart Area Margin"/>
+        <field name="dataMargin" type="integer" title="Data Area Margin"/>
+        <field name="chartRectProperties" type="DrawRect" propertiesOnly="true"/>
+        <field name="padChartRectByCornerRadius" type="boolean"/>
+
+        <!-- Automatic Gradients -->
+        <field name="useLogGradations" type="boolean"/>
+        <field name="logScale" type="boolean"/>
+        <field name="logBase" type="integer"/>
+        <field name="logGradations" type="float" multiple="true" hidden="true"/>
+
+        <!-- Legend -->
+        <field name="showLegend" type="boolean" showNullAsTrue="true" basic="true"/>
+        <field name="showColorScaleLegend" type="boolean"/>
+        <field name="showBubbleLegendPerShape" type="boolean"/>
+        <field name="drawLegendBoundary" type="boolean"/>
+        <field name="legendAlign" type="LegendAlignEnum"/>
+        <field name="legendMargin" type="positiveInteger"/>
+        <field name="legendPadding" type="positiveInteger"/>
+        <field name="legendRectHeight" type="positiveInteger"/>
+        <field name="legendSwatchSize" type="integer"/>
+        <field name="legendTextPadding" type="integer"/>
+        <field name="legendItemPadding" type="integer"/>
+        <field name="legendSwatchProperties" type="DrawRect" propertiesOnly="true"/>
+        <field name="legendRectProperties" type="DrawRect" propertiesOnly="true"/>
+        <field name="legendBoundaryProperties" type="DrawLine" propertiesOnly="true"/>
+        <field name="legendLabelProperties" type="DrawLabel" propertiesOnly="true"/>
+
+        <!-- Ticks -->
+        <field name="showYTicks" type="boolean"/>
+        <field name="showXTicks" type="boolean"/>
+        <field name="tickLength" type="positiveInteger"/>
+        <field name="minorTickLength" type="positiveInteger"/>
+        <field name="tickMarkToValueAxisMargin" type="integer"/>
+        <field name="showMinorTicks" type="boolean"/>
+        <field name="majorTickGradations" type="float" multiple="true" hidden="true"/>
+        <field name="majorTickTimeIntervals" type="string" multiple="true" hidden="true"/>
+
+        <!-- Data Points -->
+        <field name="showDataPoints" type="boolean" title="Draw Points for Values"/>
+        <field name="dataPointSize" type="positiveInteger"/>
+        <field name="dataPointProperties" type="DrawItem" propertiesOnly="true"/>
+        <field name="pointShapes" type="PointShapeEnum" multiple="true" hidden="true"/>
+        <field name="pointSizeMetric" type="string"/>
+        <field name="minDataPointSize" type="float"/>
+        <field name="maxDataPointSize" type="float"/>
+        <field name="logScalePointSize" type="boolean"/>
+        <field name="pointSizeLogBase" type="positiveInteger"/>
+        <field name="useMultiplePointShapes" type="boolean"/>
+        <field name="showPointSizeLegend" type="boolean"/>
+        <field name="logScalePointColor" type="boolean"/>
+        <field name="pointColorLogBase" type="positiveInteger"/>
+        <field name="scaleStartColor" type="string"/>
+        <field name="scaleEndColor" type="string"/>
+  
+        <!-- Appearance -->
+        <field name="showShadows" type="boolean"/>
+        <field name="shadowProperties" type="DrawOval" propertiesOnly="true"/>
+        <field name="showValueOnHover" type="boolean"/>
+        <field name="clusterMarginRatio" type="integer"/>
+        <field name="hoverLabelProperties" type="DrawLabel" propertiesOnly="true"/>
+        <field name="hoverLabelPadding" type="integer"/>
+        <field name="hoverRectProperties" type="DrawRect" propertiesOnly="true"/>
+        <field name="allowBubbleGradients" type="boolean" showNullAsTrue="true"/>
+        <field name="autoSortBubblePoints" type="boolean"/>
+        <field name="bubbleProperties" type="DrawItem" propertiesOnly="true"/>
+        <field name="bubbleHoverMaxDistance" type="integer"/>
+        <field name="valueAxisMargin" type="integer"/>
+        <field name="canMoveAxes" type="boolean"/>
+        <field name="extraAxisMetrics" type="string" multiple="true" hidden="true"/>
+        <!-- <field name="extraAxisSettings" type="MetricSettings" multiple="true" hidden="true"/> -->
+        <field name="colorMutePercent" type="float"/>
+        <field name="autoScrollData" type="boolean"/>
+
+        <!-- Bar chart properties -->
+        <field name="barMargin" type="integer"/>
+        <field name="minBarThickness" type="integer"/>
+        <field name="maxBarThickness" type="integer"/>
+        <field name="barProperties" type="DrawRect" propertiesOnly="true"/>
+
+        <!-- Pie chart properties -->
+        <field name="pieLabelAngleStart" type="integer"/>
+        <field name="pieLabelLineExtent" type="integer"/>
+        <field name="showDoughnut" type="boolean"/>
+        <field name="doughnutRatio" type="float"/>
+        <field name="pieStartAngle" type="positiveInteger"/>
+        <field name="pieSliceProperties" type="DrawSector" propertiesOnly="true"/>
+        <field name="pieBorderProperties" type="DrawOval" propertiesOnly="true"/>
+        <field name="pieRingBorderProperties" type="DrawOval" propertiesOnly="true"/>
+        <field name="doughnutHoleProperties" type="DrawOval" propertiesOnly="true"/>
+        <field name="pieLabelLineProperties" type="DrawLine" propertiesOnly="true"/>
+
+        <!-- Radar chart properties -->
+        <field name="showRadarGradationLabels" type="boolean"/>
+
+        <!-- Histogram chart properties -->
+        <field name="endValueMetric" type="string"/>
+        <field name="zIndexMetric" type="string"/>
+        <field name="maxDataZIndex" type="positiveInteger"/>
+
+        <!-- General chart properties -->
+        <field name="radialLabelOffset" type="integer" recreateOnChange="true"/>
+        <field name="proportional" type="boolean"/>
+        <field name="proportionalAxisLabel" type="string"/>
+
+        <!-- Zoom -->
+        <field name="canZoom" type="boolean" recreateOnChange="true"/>
+        <field name="labelCollapseMode" type="LabelCollapseMode" title="Zoom Hidden Labels Mode"/>
+        <field name="zoomChart" type="FacetChart" propertiesOnly="true"/>
+        <field name="zoomChartProperties" type="FacetChart" propertiesOnly="true"/>
+        <field name="zoomSelectionChart" type="FacetChart" propertiesOnly="true"/>
+        <field name="zoomSelectionChartProperties" type="FacetChart" propertiesOnly="true"/>
+        <field name="zoomShowSelection" type="boolean" defaultValue="true"/>
+        <field name="zoomChartSlider" type="RangeSlider" propertiesOnly="true"/>
+        <field name="zoomChartHeight" type="positiveInteger" recreateOnChange="true"/>
+        <field name="zoomLogScale" type="boolean"/>
+        <field name="zoomMutePercent" type="float" recreateOnChange="true"/>
+        <field name="zoomStartPosition" type="ZoomStartPositionEnum"/>
+        <field name="zoomStartValue" type="any"/>
+        <field name="zoomEndValue" type="any"/>
+
+        <!-- Gradations -->
+        <field name="gradationLabelProperties" type="DrawLabel" propertiesOnly="true"/>
+        <field name="pixelsPerGradation" type="positiveInteger"/>
+        <field name="otherAxisPixelsPerGradation" type="positiveInteger"/>
+        <field name="gradationGaps" type="float" multiple="true" hidden="true"/>
+        <field name="otherAxisGradationGaps" type="float" multiple="true" hidden="true"/>
+        <field name="otherAxisGradationTimes" type="string" multiple="true" hidden="true"/>
+        <field name="gradationLineProperties" type="DrawLine" propertiesOnly="true"/>
+        <field name="gradationZeroLineProperties" type="DrawLine" propertiesOnly="true"/>
+        <field name="pointSizeGradations" type="positiveInteger"/>
+        <field name="usePointSizeLogGradations" type="boolean"/>
+        <field name="pointSizeLogGradations" type="float" multiple="true" hidden="true"/>
+        <field name="useLogGradations" type="boolean"/>
+        <field name="logBase" type="positiveInteger"/>
+        <field name="logGradations" type="float" multiple="true" hidden="true"/>
+        <field name="showGradationsOverData" type="boolean"/>
+        <field name="gradationLabelPadding" type="positiveInteger"/>
+        <!-- deprecated -->
+        <field name="gradationTickMarkLength" type="positiveInteger"/>
+
+        <!-- Statistics -->
+        <field name="probabilityMetric" type="string"/>
+        <field name="showStatisticsOverData" type="boolean"/>
+        <field name="showStandardDeviationLines" type="boolean"/>
+        <field name="useSymmetricStandardDeviations" type="boolean"/>
+        <field name="bandedStandardDeviations" type="boolean"/>
+        <field name="showRegressionLine" type="boolean"/>
+        <field name="standardDeviations" type="float" multiple="true" hidden="true"/>
+        <field name="standardDeviationLineProperties" type="DrawLine" propertiesOnly="true"/>
+        <!-- <field name="standardDeviationBandProperties" type="DrawItem" muiltiple="true" propertiesOnly="true"/> -->
+        <field name="regressionLineProperties" type="DrawLine" propertiesOnly="true"/>
+        <field name="regressionLineType" type="RegressionLineTypeEnum"/>
+        <field name="regressionPolynomialDegree" type="number"/>
+
+        <!-- Printing -->
+        <field name="printZoomChart" type="boolean"/>
+
+        <!-- DataBinding -->
+        <field name="dataSource" type="DataSource" idAllowed="true" hidden="false"
+            editorType="ProjectDataSourcePicker" basic="true"/>
+
+		<field name="autoFetchData"	type="boolean" recreateOnChange="true" basic="true"/>
+        <field name="autoFetchTextMatchStyle" type="textMatchStyleEnum" recreateOnChange="true"/>
+
+        <field name="facetFields" type="string" multiple="true" group="databinding"
+            requiresDSField="dataSource" editorType="BoundDSMultiFieldPicker" basic="true"/>
+        <field name="valueProperty" type="string"
+            requiresDSField="dataSource" editorType="SingleFieldPicker" basic="true"/>
+
+        <!-- inapplicable fields -->
+        <field name="groupTitle" inapplicable="true"/>
+        <field name="enableWhen" inapplicable="true"/>
+
+        <field name="showEdges" inapplicable="true"/>
+        <field name="edgeSize" inapplicable="true"/>
+        <field name="edgeImage" inapplicable="true"/>
+        <field name="customEdges" inapplicable="true"/>
+        <field name="edgeBackgroundColor" inapplicable="true"/>
+        <field name="edgeShowCenter" inapplicable="true"/>
+        <field name="edgeCenterBackgroundColor" inapplicable="true"/>
+        <field name="edgeOffset" inapplicable="true"/>
+        <field name="edgeOpacity" inapplicable="true"/>
+    </fields>
+    <types>
+        <type ID="ShowDataValuesMode" inheritsFrom="enum">
+            <valueMap>
+                <value ID="never">Never</value>
+                <value ID="auto">Automatically</value>
+                <value ID="inChartOnly">In chart if all fit</value>
+                <value ID="inChartOrHover">In chart if fit; hover otherwise</value>
+                <value ID="inChartAndHover">In chart if fit with hovers</value>
+                <value ID="inHoverOnly">Only in hovers</value>
+            </valueMap>
+        </type>
+        <type ID="LabelCollapseMode" inheritsFrom="enum">
+            <valueMap>
+                <value>none</value>
+                <value>numeric</value>
+                <value>time</value>
+                <value>sample</value>
+            </valueMap>
+        </type>
+        <type ID="LabelRotationMode" inheritsFrom="enum">
+            <valueMap>
+                <value>never</value>
+                <value>auto</value>
+                <value>always</value>
+            </valueMap>
+        </type>
+        <type ID="LegendAlignEnum" inheritsFrom="enum">
+			<valueMap>
+				<value>left</value>
+				<value>right</value>
+				<value>center</value>
+			</valueMap>
+		</type>	
+        <type ID="ZoomStartPositionEnum" inheritsFrom="enum">
+			<valueMap>
+				<value>start</value>
+				<value>end</value>
+			</valueMap>
+		</type>	
+        <type ID="RegressionLineTypeEnum" inheritsFrom="enum">
+			<valueMap>
+				<value>line</value>
+				<value>polynomial</value>
+			</valueMap>
+		</type>	
+        <type ID="PointShapeEnum" inheritsFrom="enum">
+			<valueMap>
+				<value>Oval</value>
+				<value>Square</value>
+				<value>Diamond</value>
+				<value>Triangle</value>
+			</valueMap>
+		</type>	
+    </types>
+
+    <methods>
+        <method title="Fetch Data" name="fetchData" action="true"
+                icon="[SKINIMG]/actions/search.png"/>
+        <method name="valueClick" basic="true" default="true" />
+        <method name="pointClick" basic="true" />
+        <method name="legendClick" />
+        <method name="dataLabelClick" />
+    </methods>
+</DataSource>

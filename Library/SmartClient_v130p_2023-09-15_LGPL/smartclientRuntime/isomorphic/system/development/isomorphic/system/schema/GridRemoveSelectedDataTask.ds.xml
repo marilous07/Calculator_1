@@ -1,0 +1,13 @@
+<DataSource ID="GridRemoveSelectedDataTask" inheritsFrom="ComponentTask" Constructor="GridRemoveSelectedDataTask">
+    <fields>
+        <field name="allowMultiRecordRemove" type="boolean" xmlAttribute="true" />
+        <field name="refuseMultiRemoveMessage" type="string" />
+        <field name="showConfirmation" type="boolean" xmlAttribute="true" />
+        <field name="confirmationMessage" type="string" />
+        <field name="multipleConfirmationMessage" type="string" />
+        <field name="unboundConfirmationMessage" type="string" />
+        <field name="unboundMultipleConfirmationMessage" type="string" />
+        <field name="failureElement" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

@@ -1,0 +1,12 @@
+<List>
+
+    <record>
+        <id>1</id>
+        <info>First receipt info</info>
+    </record>
+    <record>
+        <id>2</id>
+        <info>Second receipt info</info>
+    </record>
+
+</List>

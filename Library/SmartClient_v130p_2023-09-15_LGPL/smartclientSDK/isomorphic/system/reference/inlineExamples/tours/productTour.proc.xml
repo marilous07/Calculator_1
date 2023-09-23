@@ -1,0 +1,66 @@
+<Tour ID="productTour" showProgress="true">
+    <steps>
+
+        <TourStep title="Welcome">
+            <instructions>Welcome to the SmartClient Showcase!  We'll show you how to use it</instructions>
+        </TourStep>
+        <TourStep title="Sample Tree">
+            <instructions>On your left is a tree of all of the available samples</instructions>
+            <target>//FeatureExplorer[ID="featureExplorer"]/exampleTree/</target>
+        </TourStep>
+        <TourStep title="Search Samples">
+            <instructions>You can search samples using this search box</instructions>
+            <showOutline>true</showOutline> 
+            <target>//FeatureExplorer[ID="featureExplorer"]/gridSearch/item[name=search||title=Search%20examples||index=0||Class=TextItem]/element</target>
+        </TourStep>
+        <TourStep title="Collapsible Sample Description">
+            <instructions>This area shows the sample description.  Click here to minimize it for more room.  Click again to get it back.</instructions>
+            <autoComplete>false</autoComplete>
+            <actionType>click</actionType>
+            <target>//FeatureExplorer[ID="featureExplorer"]/examplePage/resizeBar[Class=Snapbar||index=0||length=1||classIndex=0||classLength=1]/</target>
+        </TourStep>
+
+        <TourStep title="Collapse Sample Tree">
+            <instructions>Want even more space?  You can click here to collapse the sample tree temporarily.  Just click again to get it back.</instructions>
+            <autoComplete>false</autoComplete>
+            <actionType>click</actionType>
+            <target>//FeatureExplorer[ID="featureExplorer"]/leftSuperPane/resizeBar[Class=Snapbar||index=0||length=1||classIndex=0||classLength=1]/</target>
+        </TourStep>
+
+        <TourStep title="Skin Switching">
+            <instructions>Use this drop-down to change to a different "Skin", which changes the appearance of all controls.  Several options are available, and you can create your own.</instructions>
+            <showOutline>true</showOutline>
+            <target>//FeatureExplorer[ID="featureExplorer"]/exampleViewer/skinSwitcher/item[name=skin||title=Skin||value=Tahoe||index=0||Class=SelectItem]/textbox</target>
+        </TourStep>
+
+        <TourStep title="Density Change">
+            <instructions>The whole framework can also change "Density", meaning the overall size of controls and text.  It's easy to make this an end-user setting, too!</instructions>
+            <showOutline>true</showOutline>
+            <target>//FeatureExplorer[ID="featureExplorer"]/exampleViewer/densitySwitcher/item[name=density||title=Density||value=fontIncrease%3D3%26sizeIncrease%3D10||index=0||Class=SelectItem]/textbox</target>
+        </TourStep>
+
+        <TourStep title="Printing">
+            <instructions>Any screen can be printed.  The printable version of a screen automatically omits interactive controls and simplifies styling for legibility when printed.</instructions>
+            <showOutline>true</showOutline>
+            <target>//FeatureExplorer[ID="featureExplorer"]/exampleViewer/printButton/</target>
+        </TourStep>
+
+        <!-- set autoComplete to true for this step - we need the user to show the source code in order to get at the revert button -->
+        <TourStep title="Source Code">
+            <instructions><![CDATA[Each file involved in the sample appears here, as a tab. You can even edit it, and try out changes!<P><i><b>Click</b> to see the source code.</i>]]></instructions>
+            <actionType>click</actionType>
+            <showOutline>true</showOutline>
+            <showArrow>true</showArrow>
+            <target>//FeatureExplorer[ID="featureExplorer"]/exampleViewer/tab[title=launchProductTour.js||index=1]/</target>
+        </TourStep>
+
+        <TourStep title="Reset Sample">
+            <instructions>If you play with a sample and get stuck, or if you modified it and want to see the original sample, just click here to restart the sample.</instructions>
+            <target>//FeatureExplorer[ID="featureExplorer"]/exampleViewer/exampleSourcePane[Class=ExampleSourcePane||index=0||length=1||classIndex=0||classLength=1]/sourceEditor/sourceEditorToolbar/revertButton/</target>
+        </TourStep>
+
+        <TourStep title="Thanks!">
+            <instructions> Thanks for taking the tour!  Please have fun playing with the samples!</instructions>
+        </TourStep>
+    </steps>
+</Tour>

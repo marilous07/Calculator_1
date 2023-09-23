@@ -1,0 +1,8 @@
+<DataSource ID="MultiDecisionTask" inheritsFrom="ProcessElement" Constructor="MultiDecisionTask">
+    <fields>
+        <field name="decisionList" type="DecisionBranch" multiple="true" />
+        <field name="defaultElement" type="string" xmlAttribute="true" />
+        <field name="nextElement" inapplicable="true" />
+    </fields>
+</DataSource>
+

@@ -1,0 +1,97 @@
+
+<HLayout
+	ID="pageLayout"
+	width="100%"
+	height="100%"
+    membersMargin="15"
+    autoDraw="true">
+	<members>        
+        <ListGrid
+            ID="exportGrid"
+            width="100%"
+            height="100%"
+            autoFetchData="true"
+            dataSource="employees"
+            alternateRecordStyles="true"
+            selectionType="single"        >
+            <fields>
+                <ListGridField name="EmployeeId"/>
+                <ListGridField name="Name"/>
+                <ListGridField name="Job"/>
+                <ListGridField name="Email"/>
+                <ListGridField name="EmployeeType"  align="right"/>
+                <ListGridField name="Salary"/>
+                <ListGridField name="OrgUnit"/>
+            </fields>   
+            <dynamicProperties>
+                <property name="exportFieldWidths" >
+                    <trueWhen>
+                        <criteria fieldName="settingsForm/values/exportFieldWidths" />
+                        <criteria fieldName="settingsForm/values/exportAs" operator="inSet" >
+                            <value>xls</value>
+                            <value>ooxml</value>
+                        </criteria>
+                    </trueWhen>
+                </property>
+                <property name="exportFieldAlignments" dataPath="settingsForm/values/exportFieldAlignments">
+                    <trueWhen>
+                        <criteria fieldName="settingsForm/values/exportFieldAlignments" />
+                        <criteria fieldName="settingsForm/values/exportAs" operator="inSet" >
+                            <value>xls</value>
+                            <value>ooxml</value>
+                        </criteria>
+                    </trueWhen>
+                </property>
+                <property name="exportDisplay" dataPath="settingsForm/values/exportDisplay"/>
+                <property name="exportAs" dataPath="settingsForm/values/exportAs"/>
+            </dynamicProperties>            
+        </ListGrid>        
+        <VLayout
+            ID="hLayout"
+            width="300"
+            height="100%"
+            membersMargin="30">
+            <members>
+                <DynamicForm ID="settingsForm" >
+                    <fields>
+                        <CheckboxItem name="exportFieldWidths" title="Export Field Widths" >
+                            <readOnlyWhen fieldName="settingsForm.values.exportAs" operator="inSet" >
+                                <value>csv</value>
+                                <value>xml</value>
+                            </readOnlyWhen>
+                        </CheckboxItem>
+                        <CheckboxItem name="exportFieldAlignments" title="Export Field Alignments" >
+                            <readOnlyWhen fieldName="settingsForm.values.exportAs" operator="inSet" >
+                                <value>csv</value>
+                                <value>xml</value>
+                            </readOnlyWhen>
+                        </CheckboxItem>
+                        <SelectItem name="exportAs"  title="Export Type" width="*" wrapTitle="false" defaultValue="csv">
+                            <valueMap>
+                                <value ID="csv">CSV</value>
+                                <value ID="xml">XML</value>
+                                <value ID="xls">XLS (Excel97)</value>
+                                <value ID="ooxml">OOXML (Excel2007)</value>
+                            </valueMap>
+                        </SelectItem>
+                        <CheckboxItem name="exportDisplay" title="Show in Window" width="*" wrapTitle="false">
+                            <valueMap>
+                                <value ID="window">true</value>
+                                <value ID="download">false</value>
+                            </valueMap>
+                        </CheckboxItem>
+                    </fields>
+                </DynamicForm>
+                <IButton
+                    ID="exportButton"
+                    title="Export"
+                    width="150">                    
+                    <click>
+                        <Action target="exportGrid" name="exportData"/>
+                    </click>
+                </IButton>
+            </members>
+        </VLayout>            
+	</members>
+</HLayout>
+

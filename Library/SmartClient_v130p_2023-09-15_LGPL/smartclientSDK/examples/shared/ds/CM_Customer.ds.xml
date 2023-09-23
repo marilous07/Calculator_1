@@ -1,0 +1,36 @@
+<DataSource serverType="sql"
+    ID="CM_Customer"
+    tableName="customers">
+
+    <title>Customer</title>
+    <description>
+      Classic Models Inc. has 122 customers across the world. Approximately 20 of those are
+      brand new customers that don’t have an assigned sales rep and have not placed any orders
+      yet.
+
+      Each customer has a credit limit which determines their maximum outstanding balance.
+    </description>
+
+    <useAnsiJoins>true</useAnsiJoins>
+    <fields>
+        <field name="customerNumber" type="sequence" primaryKey="true" editRequires="false" />
+        <field name="customerName" type="text" length="50" required="true" />
+        <field name="contactLastName" type="text" length="50" required="true" />
+        <field name="contactFirstName" type="text" length="50" required="true" />
+        <field name="phone" type="text" length="50" required="true" />
+        <field name="addressLine1" type="text" length="50" required="true"/>
+        <field name="addressLine2" type="text" length="50" />
+        <field name="city" type="text" length="50" required="true"/>
+        <field name="state" type="text" length="50" />
+        <field name="postalCode" type="text" length="15" />
+        <field name="country" type="text" length="50" required="true"/>
+        <field name="salesRepEmployeeNumber" type="integer"
+               foreignKey="CM_Employee.employeeNumber" joinType="outer"
+               displayField="salesRepEmployeeName" foreignDisplayField="lastName"
+               title="Sales Rep"/>
+        <field name="salesRepEmployeeName" includeFrom="CM_Employee.lastName" />
+        <field name="creditLimit" type="float" />
+        <field name="territory" includeFrom="CM_Employee.CM_Office.territory" />
+    </fields>
+    
+</DataSource>

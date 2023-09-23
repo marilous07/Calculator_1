@@ -1,0 +1,25 @@
+<isomorphicXML>
+
+<DataSource loadParents="true" loadID="supplyItem"/>
+
+
+<DynamicForm dataSource="supplyItem" ID="simpleForm">
+    <fields>
+        <TextItem name="itemName" title="Item Name"/>
+        <FloatItem name="unitCost" title="Price"/>
+        <CheckboxItem name="inStock"/>
+        <DateItem useTextField="true" name="nextShipment" title="Stock Date">
+            <defaultValue></defaultValue>
+        </DateItem>
+    </fields>
+</DynamicForm>
+
+
+<DataView overflow="hidden" ID="simpleFormScreen" width="100%" height="100%" autoDraw="true">
+    <members>
+        <Canvas ref="simpleForm"/>
+    </members>
+</DataView>
+
+
+</isomorphicXML>

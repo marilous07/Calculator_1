@@ -1,0 +1,5 @@
+<DataSource ID="RibbonBar" inheritsFrom="ToolStrip" Constructor="RibbonBar">
+    <fields>
+        <field name="groupTitleAlign"   type="valignEnum" title="Group Title Align" basic="false"/>
+    </fields>
+</DataSource>

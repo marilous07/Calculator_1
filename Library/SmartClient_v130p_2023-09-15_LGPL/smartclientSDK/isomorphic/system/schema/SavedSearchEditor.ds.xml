@@ -1,0 +1,26 @@
+<DataSource     ID="SavedSearchEditor" inheritsFrom="VLayout" Constructor="SavedSearchEditor">
+	<fields>
+        <field name="mode" type="SearchEditorMode"/>
+        <field name="isAdmin" type="boolean"/>
+        <field name="sharedSearchCheckbox" type="CheckboxItem"/>
+        <field name="sharedSearchTitle" type="string"/>
+        <field name="defaultSearchCheckbox" type="CheckboxItem"/>
+        <field name="defaultSearchTitle" type="string"/>
+        <field name="promptLabel" type="Label"/>
+        <field name="addSearchText" type="string"/>
+        <field name="gridAddSearchText" type="string"/>
+        <field name="editSearchText" type="string"/>
+        <field name="searchNameItem" type="TextItem"/>
+        <field name="filterBuilder" type="FilterBuilder"/>
+        <field name="saveButton" type="IButton"/>
+        <field name="cancelButton" type="IButton"/>
+	</fields>
+
+	<types>
+		<type ID="SearchEditorMode"		inheritsFrom="enum"	 >
+			<valueMap>
+				<value>normal</value>
+			</valueMap>
+		</type>	
+    </types>
+</DataSource>

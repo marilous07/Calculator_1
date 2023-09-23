@@ -1,0 +1,6 @@
+<DataSource ID="GetPropertiesTask" inheritsFrom="ComponentTask" Constructor="GetPropertiesTask">
+    <fields>
+        <field name="targetFieldName" type="string" xmlAttribute="true" />
+        <field name="properties" type="ValueMap" />
+    </fields>
+</DataSource>

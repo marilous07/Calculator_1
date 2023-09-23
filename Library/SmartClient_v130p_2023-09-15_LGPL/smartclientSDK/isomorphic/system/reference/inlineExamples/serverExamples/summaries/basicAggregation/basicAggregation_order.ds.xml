@@ -1,0 +1,13 @@
+<DataSource
+        ID="basicAggregation_order"
+        serverType="sql"
+        tableName="aggregation_order"
+        testFileName="/examples/shared/ds/serverExamples/test_data/aggregation_order.data.xml"
+>
+    <fields>
+        <field name="orderID" type="sequence" primaryKey="true" hidden="true" canEdit="false"/>
+        <field name="customerName" type="text" />
+        <field name="orderDate" type="date" />
+        <field name="trackingNumber" type="integer" />
+    </fields>
+</DataSource>

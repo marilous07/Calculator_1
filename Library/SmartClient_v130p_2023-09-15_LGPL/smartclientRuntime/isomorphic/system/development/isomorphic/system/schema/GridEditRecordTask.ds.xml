@@ -1,0 +1,7 @@
+<DataSource ID="GridEditRecordTask" inheritsFrom="ComponentTask" Constructor="GridEditRecordTask">
+    <fields>
+        <field name="criteria" type="Criterion" />
+        <field name="initialValues" type="Record" fieldsCanBeFormula="true"/>
+        <field name="editFirstRecord" type="boolean"/>
+    </fields>
+</DataSource>

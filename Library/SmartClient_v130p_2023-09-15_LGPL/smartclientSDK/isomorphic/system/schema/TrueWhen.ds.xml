@@ -1,0 +1,8 @@
+<Object ID="TrueWhen" __autoConstruct="DataSource" addGlobalId="false">
+    <fields>
+        <advancedCriteria type="AdvancedCriteria"/>
+        <AdvancedCriteria type="AdvancedCriteria"/>
+        <criteria type="AdvancedCriteria"/>
+        <Criteria type="AdvancedCriteria"/>
+    </fields>
+</Object>

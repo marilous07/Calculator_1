@@ -1,0 +1,10 @@
+<DataSource ID="GridSelectRecordsTask" inheritsFrom="ComponentTask" Constructor="GridSelectRecordsTask">
+    <fields>
+        <field name="select" type="boolean" xmlAttribute="true" />
+        <field name="criteria" type="Criterion" />
+        <field name="selectMultiple" type="boolean" xmlAttribute="true" />
+        <field name="keepExistingSelection" type="boolean" xmlAttribute="true" />
+        <field name="scrollIntoView" type="boolean" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

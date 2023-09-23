@@ -1,0 +1,46 @@
+<DataSource
+        ID="basicAggregation_orderItem"
+        serverType="sql"
+        tableName="aggregation_orderItem"
+        testFileName="/examples/shared/ds/serverExamples/test_data/aggregation_orderItem.data.xml"
+>
+    <fields>
+        <field name="pk" type="sequence" primaryKey="true" hidden="false" />
+        <field name="orderID" type="integer" canEdit="false" foreignKey="basicAggregation_order.orderID"/>
+        <field name="orderCustomerName" type="text" canEdit="false" includeFrom="basicAggregation_order.customerName"/>
+        <field name="itemDescription" type="text" />
+        <field name="quantity" type="integer" />
+        <field name="unitPrice" type="float" />
+        <field name="amount" type="float" customSQLExpression="quantity*unitPrice" format="#,##0.00" />
+    </fields>
+    <operationBindings>
+        <operationBinding operationType="fetch" operationId="amountByItem">
+            <groupBy>itemDescription</groupBy>
+            <summaryFunctions>
+                <pk>count</pk>
+                <amount>sum</amount>
+            </summaryFunctions>
+        </operationBinding>
+        <operationBinding operationType="fetch" operationId="amountByCustomer">
+            <groupBy>orderCustomerName</groupBy>
+            <summaryFunctions>
+                <pk>count</pk>
+                <amount>sum</amount>
+            </summaryFunctions>
+        </operationBinding>
+        <operationBinding operationType="fetch" operationId="minPriceByItem">
+            <groupBy>itemDescription</groupBy>
+            <summaryFunctions>
+                <pk>count</pk>
+                <unitPrice>min</unitPrice>
+            </summaryFunctions>
+        </operationBinding>
+        <operationBinding operationType="fetch" operationId="maxPriceByItem">
+            <groupBy>itemDescription</groupBy>
+            <summaryFunctions>
+                <pk>count</pk>
+                <unitPrice>max</unitPrice>
+            </summaryFunctions>
+        </operationBinding>
+    </operationBindings>
+</DataSource>

@@ -1,0 +1,5 @@
+<DataSource ID="TreeGridField" inheritsFrom="ListGridField" useParentFieldOrder="true">
+    <fields>
+        <field name="treeField" type="boolean" xmlAttribute="true"/>
+    </fields>
+</DataSource>

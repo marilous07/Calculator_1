@@ -1,0 +1,157 @@
+<DataSource ID="sc_SavedSearches" 
+    serverType="sql" ownerIdField="userId"
+    ownerIdNullAccess="view" ownerIdNullRole="admin" cacheAllData="true">
+<!-- This dataSource is designed to store "SavedSearches" associated with databound components.
+         See the client side reference document topic for more information:
+         https://www.smartclient.com/smartclient-release/isomorphic/system/reference/?id=class..SavedSearches
+     -->
+
+    <!-- autoJoinTransactions:false - if passed a queued remove followed by an add, allow the remove to complete
+         before processing the add request. This allows our uniqueness check validator to function as expected -->
+    <autoJoinTransactions>false</autoJoinTransactions>
+    <fields>
+        <field name="pk" primaryKey="true" type="sequence"/>
+        <field name="data" type="string" length="8096"/>
+        <field name="searchName" type="string" length="256" escapeHTML="true">
+            <validators>
+                <!-- Disallow multiple searches with the same name for the same user -->
+                <validator type="serverCustom" errorMessage="A saved search with this name already exists">
+                    <serverCondition language="groovy"><![CDATA[
+                        def isAdmin = record.get("admin");
+                        // Build a simple criteria map from the record to ensure
+                        // no other record exists with the same searchName, componentId, applicationId, screenId
+                        // For user searches include the userId, otherwise check for the admin flag.
+                        def uniqueCheckCriteria = new HashMap();
+                        record.each {
+                            m -> {
+                                def skip = (m.key == "data") || (isAdmin && (m.key == "userId"));
+                                if (!skip) {
+                                    uniqueCheckCriteria.put(m.key, m.value);
+                                }
+                            }
+                        }
+                        def data = dataSource.fetch(uniqueCheckCriteria);
+                        // If we found a collision, return a validation error
+                        def match = data.size() > 0 ? data[0] : null;
+                        if (match != null && match.get("pk") != record.get("pk")) {
+                            return false;
+                        }
+                        return true;
+                    ]]></serverCondition>
+                </validator>
+            </validators>
+        </field>
+        <field name="componentId" type="string" length="256"/>
+        <field name="screenId" type="string" length="256"/>
+        <field name="projectId" type="string" length="256"/>
+        <field name="applicationId" type="string" length="256"/>
+        <!-- userId field tracks who a search belongs to. Will be null if  this is a
+             shared (or "admin") search. Only users with the role "admin" can create and 
+             edit shared searches, but all users can view them.
+             This is enforced on the server by the dataSource settings
+             ownerIdField, ownerIdNullAccess and ownerIdNullRole
+             
+        -->
+        <field name="userId" type="string" length="256"/>
+        <!-- Creator field tracks the user that created the search as opposed to the
+             userId field which indicates who it applies to [or is set to null for shared searches]
+              -->
+        <field name="creator" type="modifier" length="256"/>
+
+        <!-- admin field is omitted - this dataSource uses userID=null to identify shared searches rather
+             than an 'isAdmin' boolean.
+             This simplifies security restrictions:
+             The ownerIdField, ownerIdFieldNullAccess and ownerIdFieldNullRole attributes ensure that
+             - any user can view all records with userId set to their authenticated ID, or null
+             - only admin users can create and edit searches with userId set to null
+        -->
+        <!-- isDefault field omitted - this dataSource does not persist user default search preferences to the server 
+             and is incompatible with SavedSearches.saveDefaultSearchToServer=true -->
+
+        <field name="isSharedDefault" title=" " type="boolean"/>
+    </fields>
+
+    <operationBindings>
+
+      <operationBinding operationId="setDefaultAdminSearch" 
+        requiresRole="admin" operationType="update"><script language="groovy"><![CDATA[
+
+        // The record to update can be identified by primary key.
+        def pk = dsRequest.getFieldValue("pk");
+        def isDefault = dsRequest.getFieldValue("isSharedDefault");
+        
+        def idFields = ["componentId", "screenId", "applicationId"];
+        def idCriteria = dsRequest.getValues().subMap(idFields);
+        def oldDefaultCriteria = ["isSharedDefault" : true].plus(idCriteria);
+        
+        def targetSearch = pk != null ? dataSource.fetch(idCriteria.plus(["pk" : pk]))[0] : null;
+        
+        if (targetSearch == null || targetSearch.get("userId") != null) {
+            return new DSResponse("Unable to find stored admin search with primary key:" + pk, -1);
+        }
+        if (targetSearch.get("isSharedDefault") == isDefault) {
+            log.info("setDefaultAdminSearch(): Specified search is already marked as shared default");
+            return new DSResponse(0);
+        }
+    
+        def dsResponse = new DSResponse(0);
+
+        // Search for the previous admin search that applies to this component, and mark it as no longer
+        // the default.
+        def previousDefaultResponse = new DSRequest(dsRequest.getDataSourceName(), "fetch")
+            .setCriteria(oldDefaultCriteria)
+            .execute();
+        
+        if (previousDefaultResponse.getRowCount() > 0) {
+
+            // as part of auto-transaction, remove the default setting from any default admin search records
+            def removeDefaultResponse = new DSRequest(dsRequest.getDataSourceName(), "update")
+                .setJoinTransaction(true)
+                .setAllowMultiUpdate(true)
+                .setCriteria(oldDefaultCriteria)
+                .setValues(["isSharedDefault" : false])
+                .execute()
+            ;
+        }
+
+        // Mark the specified search as the new shared default if there is one
+        if (isDefault) {
+            log.info("setDefaultAdminSearch(): Marking search with primary key " + pk + " as new shared default");
+            dsResponse = dsRequest.setJoinTransaction(true)
+                .setCriteria(idCriteria.plus(["pk" : pk]))
+                .setValues(["isSharedDefault" : true])
+                .execute()
+            ;
+        } else {
+            log.info("setDefaultAdminSearch(): Clearing existing shared default search");
+        }
+
+
+        // If we cleared the 'isSharedDefault' attribute from another record, use
+        // addRelatedUpdate() to ensure the client updates its caches to reflect this
+        if (previousDefaultResponse.getRowCount() > 0) {
+            previousDefaultResponse.setFieldValue("isSharedDefault", new Boolean(false));
+            // update the operationType as if we had just run an update so this result is intergrated in the client cache
+            previousDefaultResponse.setOperationType("update");
+            dsResponse.addRelatedUpdate(previousDefaultResponse);
+        }
+
+        return dsResponse;
+
+      ]]></script></operationBinding>
+
+    <operationBinding operationId="setDefaultUserSearch" operationType="update"><script language="groovy"><![CDATA[
+        // This dataSource does not support modifying the user default search and is incompatible with
+        // SavedSearches.saveDefaultSearchToServer
+        // Return a generic error code if invoked.
+        return new DSResponse(
+             "This dataSource does not support modifying the user default search and is incompatible with " +
+             "SavedSearches.saveDefaultSearchToServer.\n" +
+             "See client-side documentation for the SavedSearches class for more information.",
+            -1);
+
+    ]]></script></operationBinding>
+
+    </operationBindings>
+
+</DataSource>

@@ -1,0 +1,13 @@
+<DataSource ID="ShowHideTask" inheritsFrom="ComponentTask" Constructor="ShowHideTask">
+    <fields>
+        <field name="targetTabName" type="text" xmlAttribute="true" />
+        <field name="targetFieldName" type="text" xmlAttribute="true" />
+        <field name="targetSectionName" type="text" xmlAttribute="true" />
+        <field name="targetSectionTitle" type="text" xmlAttribute="true" />
+        <field name="hide" type="boolean" xmlAttribute="true" />
+        <field name="showRecursively" type="boolean" xmlAttribute="true" />
+        <field name="scrollIntoView" type="boolean" xmlAttribute="true" />
+        <field name="moveFocusToTarget" type="boolean" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

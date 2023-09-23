@@ -1,0 +1,7 @@
+<DataSource ID="DecisionTask" inheritsFrom="ProcessElement" Constructor="DecisionTask">
+    <fields>
+        <field name="criteria" type="Criterion" />
+        <field name="failureElement" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

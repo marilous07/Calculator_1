@@ -1,0 +1,7 @@
+<DataSource ID="FetchRelatedDataTask" inheritsFrom="ComponentTask" Constructor="FetchRelatedDataTask">
+    <fields>
+        <field name="dataSource" type="DataSource" idAllowed="true" />
+        <field name="recordSourceComponent" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

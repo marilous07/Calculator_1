@@ -1,0 +1,13 @@
+<!-- DataSource to support AdminConsole->SQL Browser DataSource creation -->
+<DataSource ID="dsStore" serverType="projectFile" inheritsFrom="ProjectFile" requires="$requestAttributes.adminConsoleOperationsEnabled == true">
+
+    <!-- 
+      // Created DataSources are saved into the location configured at server.properties with a key equal to 
+      // to the given value after prepending a 'project.' string literal.  Here, for example, projectFileKey 
+      // would resolve to `$webRoot/WEB-INF/ds` per the project.datasources.generated entry:
+      //
+      //    project.datasources: $webRoot/WEB-INF/ds
+      //    project.datasources.generated: ${project.datasources}
+    -->
+    <projectFileKey>datasources.generated</projectFileKey>
+</DataSource>

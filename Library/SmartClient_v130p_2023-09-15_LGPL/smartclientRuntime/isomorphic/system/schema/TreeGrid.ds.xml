@@ -1,0 +1,80 @@
+<DataSource	ID="TreeGrid"	Constructor="TreeGrid" inheritsFrom="ListGrid">
+	<fields>
+		<field name="fields"			type="TreeGridField"  multiple="true"/>
+		<field name="data"			type="Tree"/>
+        <field name="dataProperties" type="ResultTree"/>
+        <field name="initialData"       type="List"/>
+		<field name="loadDataOnDemand"	type="boolean" xmlAttribute="true" showNullAsTrue="true"/>
+		<field name="treeFieldTitle"	type="string"/>
+		<field name="showRoot"			type="boolean"/>
+		<field name="separateFolders"	type="boolean"/>
+		<field name="showConnectors"	type="boolean"/>
+		<field name="displayNodeType"	type="enum">	<!-- should come from Tree class  -->
+			<valueMap>
+				<value></value><!-- null in code to mean "foldersAndLeaves" -->
+				<value>folders</value>
+				<value>leaves</value>
+			</valueMap>
+		</field>
+        <field name="animateFolders"      type="boolean"/>
+        <field name="animateFolderSpeed"  type="number"/>
+        <field name="animateFolderTime"   type="number"/>
+        <field name="animateFolderEffect"   type="AnimationAcceleration"/>
+
+		<field name="indentSize"		type="positiveInteger"/>
+		<field name="iconSize"			type="positiveInteger"/>
+        <field name="nodeIcon"          type="SCImgURL" editorType="ImageChooserItem"/>
+        <field name="folderIcon"        type="SCImgURL" editorType="ImageChooserItem"/>
+        <field name="openIconSuffix"    type="string"/>
+        <field name="dropIconSuffix"    type="string"/>
+        <field name="closedIconSuffix"    type="string"/>
+		<field name="manyItemsImage"	type="SCImgURL" editorType="ImageChooserItem"/>
+		<field name="openerImage"	type="SCImgURL" editorType="ImageChooserItem"/>
+		<field name="connectorImage"	type="SCImgURL" editorType="ImageChooserItem"/>
+
+        <field name="canReparentNodes" type="boolean"/>
+        <field name="canDropOnLeaves"  type="boolean"/>
+
+        <field name="showOpenIcons"  type="boolean"/>
+        <field name="showDropIcons"  type="boolean"/>
+
+        <field name="customIconProperty"  type="string"/>
+        <field name="showCustomIconOpen"  type="boolean"/>
+        <field name="showCustomIconDrop"  type="boolean"/>
+
+        <field name="customIconOpenProperty"  type="string"/>
+        <field name="customIconDropProperty"  type="string"/>
+
+        <field name="parentAlreadyContainsChildMessage" type="string"/>
+        <field name="cantDragIntoSelfMessage" type="string"/>
+        <field name="cantDragIntoChildMessage" type="string"/>
+
+        <!-- visualBuilder: enable databinding on this component -->
+        <field name="dataSource" type="DataSource" idAllowed="true" hidden="false"
+            editorType="ProjectDataSourcePicker" basic="true"/>
+
+        <!-- suppress inapplicable ListGrid settings from appearing in Reify -->
+        <field name="canGroupBy"   inapplicable="true"/>
+        <field name="groupByField" inapplicable="true"/>
+        <!-- remove from basic props attribute less-used with TreeGrids vs. ListGrids -->
+        <field name="showFilterEditor" basic="false"/>
+	</fields>
+    <groups>
+        <group>treeField</group>
+        <group>dragging</group>
+        <group>cellStyling</group>
+        <group>emptyMessage</group>
+        <group>sizing</group>
+        <group>selection</group>
+        <group>sorting</group>
+        <group>editing</group>
+    </groups>
+    
+    <methods>
+        <method name="nodeClick" basic="true" />
+        <method name="leafClick" basic="true" />
+        <method name="folderClick" basic="true" />
+        <method name="selectionUpdated" basic="true" />
+    </methods>
+    
+</DataSource>

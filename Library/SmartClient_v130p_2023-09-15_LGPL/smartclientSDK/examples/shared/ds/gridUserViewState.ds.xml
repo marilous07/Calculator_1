@@ -1,0 +1,11 @@
+<DataSource isSampleDS="true"
+    ID="gridUserViewState"
+    serverType="sql"
+    tableName="gridUserViewState"
+>
+    <fields>
+        <field name="pk"            hidden="true"           type="sequence" primaryKey="true"/>
+        <field name="name"          title="Name"            type="text"     length="128"/>
+        <field name="viewState"     title="View State"      type="text"     length="10000"/>
+    </fields>
+</DataSource>

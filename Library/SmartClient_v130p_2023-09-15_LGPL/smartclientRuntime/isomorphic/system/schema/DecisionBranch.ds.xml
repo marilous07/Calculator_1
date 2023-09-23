@@ -1,0 +1,7 @@
+<DataSource ID="DecisionBranch">
+    <fields>
+        <field name="criteria" type="AdvancedCriteria" />
+        <field name="targetTask" type="string" xmlAttribute="true" />
+    </fields>
+</DataSource>
+

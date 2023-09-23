@@ -1,0 +1,21 @@
+<DataSource serverType="sql"
+    ID="CM_Payment"
+    tableName="payments">
+
+    <title>Payment</title>
+    <description>
+      Customers make payments (by check) on average 2-3 weeks after they place an order.
+      In some cases one check covers more than 1 order.
+    </description>
+
+    <fields>
+        <field name="customerNumber" title="Customer" type="integer" primaryKey="true"
+            foreignKey="CM_Customer.customerNumber"
+            displayField="customerName" />
+        <field name="customerName" type="text" includeFrom="CM_Customer.customerName" hidden="true" />
+        <field name="checkNumber" type="text" length="50" primaryKey="true" />
+        <field name="paymentDate" type="date" required="true" />
+        <field name="amount" type="float" decimalPad="2" decimalPrecision="2" required="true" />
+    </fields>
+
+</DataSource>

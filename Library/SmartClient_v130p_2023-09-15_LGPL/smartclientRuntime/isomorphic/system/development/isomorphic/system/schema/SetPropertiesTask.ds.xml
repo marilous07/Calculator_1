@@ -1,0 +1,6 @@
+<DataSource ID="SetPropertiesTask" inheritsFrom="ComponentTask" Constructor="SetPropertiesTask">
+    <fields>
+        <field name="targetFieldName" type="string" xmlAttribute="true" />
+        <field name="properties" type="PropertyValue" multiple="true"/>
+    </fields>
+</DataSource>

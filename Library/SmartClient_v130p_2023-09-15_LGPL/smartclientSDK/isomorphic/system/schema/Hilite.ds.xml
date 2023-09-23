@@ -1,0 +1,14 @@
+<DataSource ID="Hilite" inheritsFrom="Object">
+    <fields>
+        <field name="id"                type="string" xmlAttribute="true"/>  
+        <field name="title"             type="string"/>
+        <field name="fieldName"         type="string" xmlAttribute="true"/>  
+        <field name="disabled"          type="boolean" xmlAttribute="true"/>  
+        <field name="canEdit"           type="boolean" xmlAttribute="true"/>  
+        <field name="criteria" type="AdvancedCriteria"/>
+        <field name="textColor"         type="string"/>  
+        <field name="backgroundColor"   type="string"/>  
+        <field name="cssText"           type="string"/>  
+        <field name="icon"              type="string"/>  
+    </fields>
+</DataSource>
